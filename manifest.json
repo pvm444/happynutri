@@ -1,0 +1,19 @@
+{
+  "name": "HappyNutri Explorer",
+  "short_name": "HappyNutri",
+  "description": "166 foods with full nutrient breakdowns, recipes, meal planners, a growth tracker, games, and HappyNutri Buddy — an offline chat helper for food questions.",
+  "start_url": "./fruit-nutrient-explorer.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#FFFDF8",
+  "theme_color": "#FF5A42",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
