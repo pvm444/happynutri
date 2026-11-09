@@ -1069,7 +1069,7 @@
     Percent Daily Values (%DV) are based on general adult reference intakes and are for context only, not medical advice.<br>
     Peak seasons reflect typical Northern Hemisphere harvest timing — many items are available year-round through imports and storage.<br>
     This is a curated selection, not an exhaustive global list — hundreds of regional fruits, vegetables, and dishes aren't included.<br>
-    Photos are fetched live from <a href="https://www.pexels.com" target="_blank" rel="noopener">Pexels</a> and need an internet connection and a free Pexels key (<a href="#" id="photoKeyLink">add photo key</a>); everything else works offline.
+    Photos are fetched live from Wikipedia and need an internet connection to load; everything else on this page works fully offline. Photo credit: Wikipedia contributors.
   </footer>
 
   </div>
@@ -2439,68 +2439,47 @@
     }
   }
 
-  /* ================= Real photos (Pexels) =================
-     Paste your free Pexels API key between the quotes below, or tap
-     "Add photo key" under any food to save it in this browser. */
-  const PEXELS_KEY = '';
+  /* ================= Real photos (Wikipedia) ================= */
   const photoCache = {};
-  function getPexelsKey(){
-    if(PEXELS_KEY) return PEXELS_KEY;
-    try{ return localStorage.getItem('happynutri_pexels_key') || ''; }catch(e){ return ''; }
-  }
   function loadItemPhoto(item){
     const wrap = document.getElementById('photoWrap');
     const img = document.getElementById('photoImg');
     if(!wrap || !img) return;
 
-    function apply(src, credit){
+    function apply(src){
       if(selected[0] !== item.id) return; // a newer selection has since replaced this one
       const w = document.getElementById('photoWrap');
       const i = document.getElementById('photoImg');
       if(!w || !i) return;
       w.classList.remove('loading');
-      const cr = w.querySelector('.photo-credit');
       if(src){
         i.onload = ()=>{ i.classList.add('loaded'); };
         i.src = src;
         w.classList.add('has-photo');
-        if(cr) cr.textContent = credit || 'Photo via Pexels';
       } else {
         w.classList.remove('has-photo');
       }
     }
 
     if(Object.prototype.hasOwnProperty.call(photoCache, item.id)){
-      const c = photoCache[item.id];
-      apply(c && c.src, c && c.credit);
+      apply(photoCache[item.id]);
       return;
     }
-    const key = getPexelsKey();
-    if(!window.fetch || !key){ apply(null); return; }
-    const kind = item.type==='fruit' ? 'fruit' : item.type==='vegetable' ? 'vegetable' : item.type==='spice' ? 'spice' : 'food';
-    const q = item.name + ' ' + kind;
-    fetch('https://api.pexels.com/v1/search?per_page=1&orientation=landscape&query=' + encodeURIComponent(q), {headers:{Authorization:key}})
+    if(!window.fetch){ apply(null); return; }
+    const title = item.wiki || item.name;
+    fetch('https://en.wikipedia.org/api/rest_v1/page/summary/' + encodeURIComponent(title))
       .then(r => r.ok ? r.json() : null)
       .then(data => {
-        const ph = data && data.photos && data.photos[0];
-        const c = ph ? {src: ph.src.medium || ph.src.large, credit: 'Photo: ' + (ph.photographer||'Pexels') + ' / Pexels'} : null;
-        photoCache[item.id] = c;
-        apply(c && c.src, c && c.credit);
+        const src = data && data.thumbnail && data.thumbnail.source ? data.thumbnail.source : null;
+        photoCache[item.id] = src;
+        apply(src);
       })
-      .catch(() => { photoCache[item.id] = null; apply(null); });
+      .catch(() => {
+        photoCache[item.id] = null;
+        apply(null);
+      });
   }
 
-  /* Small helper so a key can be added without editing code */
-  function promptPexelsKey(){
-    const k = window.prompt('Paste your free Pexels API key (get one at pexels.com/api). It is saved only in this browser:');
-    if(k && k.trim()){
-      try{ localStorage.setItem('happynutri_pexels_key', k.trim()); }catch(e){}
-      Object.keys(photoCache).forEach(x=>delete photoCache[x]);
-      if(selected[0]){ const it = ITEMS.find(x=>x.id===selected[0]); if(it) loadItemPhoto(it); }
-    }
-  }
-
-  document.getElementById('photoKeyLink').addEventListener('click', e=>{ e.preventDefault(); promptPexelsKey(); });
 
   /* ================= Renderers: Explore ================= */
   function renderTypeToggle(){
@@ -2617,7 +2596,7 @@
       + '<div class="cal-block"><div class="cal-num" id="calNum">0</div><div class="cal-label">kcal per 100 g</div></div>'
       + '</div>'
       + '<div class="bloom-row">'
-      + '<div class="photo-wrap loading" id="photoWrap"><img id="photoImg" alt="'+fruit.name+'"><span class="photo-fallback">'+fruit.emoji+'</span><span class="photo-credit">Photo via Pexels</span></div>'
+      + '<div class="photo-wrap loading" id="photoWrap"><img id="photoImg" alt="'+fruit.name+'"><span class="photo-fallback">'+fruit.emoji+'</span><span class="photo-credit">via Wikipedia</span></div>'
       + '<div class="bloom-wrap">'+bloomHtml+'</div>'
       + '<div class="bloom-legend">'+legend+'<p class="legend-note">Petal length shows how this item ranks against everything else in the list for that nutrient — not the raw gram amount. Exact grams are labeled on each petal.</p></div>'
       + '</div>'
