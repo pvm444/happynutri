@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>HappyNutri Explorer</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#7C3AED">
@@ -170,6 +170,52 @@
     .rda-card{max-height:none;}
   }
 
+
+  /* ---------- Sticky top bar + page navigation ---------- */
+  .topbar{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.88);-webkit-backdrop-filter:saturate(1.4) blur(12px);backdrop-filter:saturate(1.4) blur(12px);border-bottom:1.5px solid var(--line);padding-top:env(safe-area-inset-top);}
+  .topbar-in{max-width:1440px;margin:0 auto;padding:8px 18px;display:flex;align-items:center;gap:16px;}
+  .topbar-brand{display:flex;align-items:center;gap:8px;background:none;border:none;cursor:pointer;padding:4px 6px;border-radius:12px;flex:none;min-height:44px;}
+  .hn-mark-top{width:34px;height:34px;}
+  .hn-word-top{font-family:'Fredoka',sans-serif;font-weight:700;font-size:20px;letter-spacing:-.01em;}
+  .topbar .main-tabs{margin:0;flex:1;justify-content:flex-end;flex-wrap:nowrap;gap:6px;}
+  .topbar .maintab{padding:8px 14px;min-height:44px;font-size:14px;border-width:2px;}
+  .maintab .mt-e{font-size:16px;line-height:1;}
+  #mainAppWrap{padding-top:14px;}
+  .page-enter{animation:pageIn .25s ease;}
+  @keyframes pageIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+  .rda-toggle{display:none;}
+
+  @media (max-width:760px){
+    .topbar-in{flex-wrap:wrap;gap:4px 8px;padding:6px 10px 8px;}
+    .hn-mark-top{width:30px;height:30px;} .hn-word-top{font-size:18px;}
+    .topbar .main-tabs{flex:1 1 100%;order:3;justify-content:stretch;display:grid;grid-template-columns:repeat(5,1fr);gap:4px;}
+    .topbar .maintab{flex-direction:column;gap:2px;padding:6px 2px;border-radius:14px;border-width:2px;font-size:11.5px;min-height:52px;justify-content:center;}
+    .topbar .maintab .mt-e{font-size:20px;}
+    .topbar .maintab:hover{transform:none;}
+  }
+  @media (max-width:960px){
+    #mainAppWrap{padding:10px 12px 60px;gap:14px;}
+    .rda-toggle{display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:none;font-family:'Fredoka',sans-serif;font-weight:700;font-size:17px;color:var(--ink);padding:0;min-height:44px;cursor:pointer;}
+    .rda-card .rda-title,.rda-card .rda-sub{display:none;}
+    .rda-sidebar.collapsed .rda-body{display:none;}
+    .rda-card{padding:10px 16px;}
+    .rda-sidebar:not(.collapsed) .rda-card{padding:14px 16px 18px;}
+  }
+  @media (max-width:640px){
+    .discover-subnav.discover-subnav{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;margin-left:-12px;margin-right:-12px;padding:2px 12px 8px;scrollbar-width:none;}
+    .discover-subnav::-webkit-scrollbar{display:none;}
+    .discover-subnav .subtab{flex:none;scroll-snap-align:start;}
+    .panel{padding:18px 14px;}
+    #gamePicker{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+    #gamePicker .game-pick-btn{min-width:0;padding:12px 4px;font-size:12px;}
+    .hero{padding:6px 2px 10px;gap:10px;}
+    .surprise-btn{width:100%;}
+    #landingScreen{padding:28px 14px 50px;}
+    .landing-cta-row{flex-direction:column;align-items:stretch;}
+    .landing-btn{width:100%;}
+    body{font-size:16px;}
+    .wrap{padding-bottom:calc(60px + env(safe-area-inset-bottom));}
+  }
   /* ---------- Hero ---------- */
   .hero{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:20px 4px 18px;flex-wrap:wrap;}
   .hero-text .eyebrow{font-family:'Fredoka',sans-serif;font-weight:600;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 4px;}
@@ -751,27 +797,33 @@
   </div>
 </section>
 
+<header class="topbar" id="topbar" hidden>
+  <div class="topbar-in">
+    <button class="topbar-brand" id="topbarHome" type="button" aria-label="HappyNutri home"><svg class="hn-mark-top" viewBox="0 0 100 100" aria-hidden="true"><use href="#hnMark"/></svg><span class="hn-word-top"><span class="hn-happy">Happy</span><span class="hn-nutri">Nutri</span></span></button>
+  <nav class="main-tabs" id="mainTabs" aria-label="Pages">
+    <button class="maintab active" data-tab="explore" type="button" style="--tab-c:var(--coral)"><span class="mt-e">🔎</span><span class="mt-l">Explore</span></button>
+    <button class="maintab" data-tab="game" type="button" style="--tab-c:var(--purple)"><span class="mt-e">🎮</span><span class="mt-l">Play</span></button>
+    <button class="maintab" data-tab="discover" type="button" style="--tab-c:var(--sky)"><span class="mt-e">🧭</span><span class="mt-l">Discover</span></button>
+    <button class="maintab" data-tab="planners" type="button" style="--tab-c:var(--lime)"><span class="mt-e">📋</span><span class="mt-l">Planners</span></button>
+    <button class="maintab" data-tab="collect" type="button" style="--tab-c:var(--mango)"><span class="mt-e">⭐</span><span class="mt-l">Collect</span></button>
+  </nav>
+  </div>
+</header>
 <div class="wrap" id="mainAppWrap" hidden>
   <div class="main-col">
 
+
+
+  <section id="exploreTab">
   <div class="hero">
     <div class="hero-text">
-      <p class="eyebrow"><svg class="hn-mark-sm" viewBox="0 0 100 100" aria-hidden="true"><use href="#hnMark"/></svg><span class="hn-word-sm"><span class="hn-happy">Happy</span><span class="hn-nutri">Nutri</span></span> Explorer <span class="hn-tag">· Fuel up. Level up.</span></p>
+      <p class="eyebrow">Explore · Fuel up. Level up.</p>
       <h1>What’s <span>actually</span> in your food?</h1>
       <p class="quote-line"><span id="quoteText"></span><button class="quote-refresh" id="quoteRefreshBtn" type="button" aria-label="New quote" title="New quote">🔄</button></p>
     </div>
     <button class="surprise-btn" id="surpriseBtn" type="button">🎲 Random food drop</button>
   </div>
 
-  <nav class="main-tabs" id="mainTabs">
-    <button class="maintab active" data-tab="explore" type="button" style="--tab-c:var(--coral)">🔎 Explore</button>
-    <button class="maintab" data-tab="game" type="button" style="--tab-c:var(--purple)">🎮 Play</button>
-    <button class="maintab" data-tab="discover" type="button" style="--tab-c:var(--sky)">🧭 Discover</button>
-    <button class="maintab" data-tab="planners" type="button" style="--tab-c:var(--lime)">📋 Planners</button>
-    <button class="maintab" data-tab="collect" type="button" style="--tab-c:var(--mango)">⭐ Collect</button>
-  </nav>
-
-  <section id="exploreTab">
     <div class="controls">
       <div class="search-row">
         <input class="search-input" id="searchInput" type="text" placeholder="🔍 Search fruits, veg, nuts, grains..." aria-label="Search">
@@ -1093,8 +1145,10 @@
 
   </div>
 
-  <aside class="rda-sidebar" id="rdaSidebar">
+  <aside class="rda-sidebar collapsed" id="rdaSidebar">
     <div class="rda-card">
+      <button class="rda-toggle" id="rdaToggle" type="button" aria-expanded="false" aria-controls="rdaBody"><span>📊 Daily Needs</span><span id="rdaChev" aria-hidden="true">▾</span></button>
+      <div class="rda-body" id="rdaBody">
       <h3 class="rda-title">📊 Daily Needs</h3>
       <p class="rda-sub">Recommended daily amounts by age & sex</p>
       <p class="filter-label" style="margin-top:10px;">Age group</p>
@@ -1104,6 +1158,7 @@
       <p class="rda-selected-line" id="rdaSelectedLine"></p>
       <div class="rda-list" id="rdaList"></div>
       <p class="rda-note">General population guidance (based on published dietary reference values), not individual medical advice — needs vary by body size, activity, pregnancy, and health conditions. Ask a doctor or dietitian for anything personal.</p>
+      </div>
     </div>
   </aside>
 
@@ -3806,6 +3861,7 @@
 
   function setPlannersSub(sub){
     plannersSub = sub;
+    if(mainTab==='planners') setHash('#/planners/'+sub);
     document.querySelectorAll('#plannersSubnav .subtab').forEach(b=>b.classList.toggle('active', b.getAttribute('data-psub')===sub));
     document.getElementById('sickTab').hidden = sub!=='sick';
     document.getElementById('travelTab').hidden = sub!=='travel';
@@ -4019,10 +4075,13 @@
     if(tab==='discover') setDiscoverSub(discoverSub);
     if(tab==='planners') setPlannersSub(plannersSub);
     if(tab==='collect') renderCollect();
+    setHash('#/'+TAB_HASH[tab]+(tab==='planners'?'/'+plannersSub:tab==='discover'?'/'+discoverSub:''));
+    showPageEnter(tab);
   }
 
   function setDiscoverSub(sub){
     discoverSub = sub;
+    if(mainTab==='discover') setHash('#/discover/'+sub);
     document.querySelectorAll('#discoverSubnav .subtab').forEach(b=>b.classList.toggle('active', b.getAttribute('data-sub')===sub));
     document.getElementById('recipesTab').hidden = sub!=='recipes';
     document.getElementById('kidsTab').hidden = sub!=='kids';
@@ -4145,10 +4204,71 @@
   }
   renderExplore();
 
+
+  /* ================= Top bar, page routing, Daily Needs toggle ================= */
+  const TAB_IDS = ['explore','game','discover','planners','collect'];
+  const TAB_HASH = {explore:'explore', game:'play', discover:'discover', planners:'planners', collect:'collect'};
+  const HASH_TAB = {explore:'explore', play:'game', game:'game', discover:'discover', planners:'planners', collect:'collect'};
+  function setHash(h){
+    try{ if(window.location.hash !== h) window.location.hash = h; }catch(e){}
+  }
+  function showPageEnter(tab){
+    const idMap = {explore:'exploreTab', game:'gameTab', discover:'discoverTab', planners:'plannersTab', collect:'collectTab'};
+    const el = document.getElementById(idMap[tab]);
+    if(el && !reducedMotion()){ el.classList.remove('page-enter'); void el.offsetWidth; el.classList.add('page-enter'); }
+    try{ window.scrollTo(0,0); }catch(e){}
+  }
+  function showHome(){
+    document.getElementById('landingScreen').hidden = false;
+    document.getElementById('mainAppWrap').hidden = true;
+    document.getElementById('topbar').hidden = true;
+    setHash('');
+    try{ history.replaceState(null,'',window.location.pathname+window.location.search); }catch(e){}
+    try{ window.scrollTo(0,0); }catch(e){}
+  }
+  function routeFromHash(){
+    const raw = (window.location.hash||'').replace(/^#\/?/,'');
+    if(!raw){
+      if(!document.getElementById('mainAppWrap').hidden){
+        document.getElementById('landingScreen').hidden = false;
+        document.getElementById('mainAppWrap').hidden = true;
+        document.getElementById('topbar').hidden = true;
+      }
+      return;
+    }
+    if(raw==='buddy'){ enterApp(true); return; }
+    const parts = raw.split('/');
+    const tab = HASH_TAB[parts[0]];
+    if(!tab) return;
+    enterApp(false, true);
+    setMainTab(tab);
+    if(tab==='planners' && parts[1]) setPlannersSub(parts[1]);
+    if(tab==='discover' && parts[1]) setDiscoverSub(parts[1]);
+  }
+  document.getElementById('topbarHome').addEventListener('click', showHome);
+  window.addEventListener('hashchange', routeFromHash);
+
+  const rdaAside = document.getElementById('rdaSidebar');
+  const rdaToggleBtn = document.getElementById('rdaToggle');
+  function setRdaCollapsed(c){
+    rdaAside.classList.toggle('collapsed', c);
+    rdaToggleBtn.setAttribute('aria-expanded', c ? 'false' : 'true');
+    document.getElementById('rdaChev').textContent = c ? '▾' : '▴';
+  }
+  rdaToggleBtn.addEventListener('click', ()=>setRdaCollapsed(!rdaAside.classList.contains('collapsed')));
+  (function(){
+    const mq = window.matchMedia ? window.matchMedia('(max-width:960px)') : null;
+    function sync(){ if(!mq || !mq.matches) rdaAside.classList.remove('collapsed'); else if(!rdaAside.dataset.touched) setRdaCollapsed(true); }
+    rdaToggleBtn.addEventListener('click', ()=>{ rdaAside.dataset.touched = '1'; });
+    if(mq){ if(mq.addEventListener) mq.addEventListener('change', sync); sync(); }
+  })();
+
   /* ================= Landing screen ================= */
-  function enterApp(jumpToBuddy){
+  function enterApp(jumpToBuddy, skipTab){
     document.getElementById('landingScreen').hidden = true;
     document.getElementById('mainAppWrap').hidden = false;
+    document.getElementById('topbar').hidden = false;
+    if(!jumpToBuddy && !skipTab) setMainTab('explore');
     if(jumpToBuddy){
       setMainTab('planners');
       setPlannersSub('buddy');
@@ -4158,8 +4278,8 @@
   document.getElementById('landingOpenBuddyBtn').addEventListener('click', ()=>enterApp(true));
 
   // Deep link support: opening this file with #buddy skips the landing screen and jumps straight in
-  if(window.location.hash === '#buddy'){
-    enterApp(true);
+  if(window.location.hash && window.location.hash !== '#'){
+    routeFromHash();
   }
 
   // PWA: register the offline service worker if this page is hosted (not opened as a local file)
