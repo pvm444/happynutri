@@ -59,7 +59,7 @@
   .hn-mark{width:76px;height:76px;filter:drop-shadow(0 8px 14px rgba(109,40,217,.28));}
   .hn-word{font-family:'Fredoka',sans-serif;font-weight:700;font-size:34px;letter-spacing:-.01em;line-height:1;}
   .hn-happy{color:#6D28D9;} .hn-nutri{color:#2E8B1F;}
-  .landing-slogan{text-align:center;font-family:'Fredoka',sans-serif;font-weight:600;font-size:15px;letter-spacing:.06em;color:var(--muted);margin:8px 0 0;}
+  .landing-slogan{background:linear-gradient(90deg,#7C3AED,#2E8B1F);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#5B21B6;text-align:center;font-family:'Fredoka',sans-serif;font-weight:600;font-size:18px;letter-spacing:.04em;margin:8px 0 0;}
   .hero-text .eyebrow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
   .hn-mark-sm{width:26px;height:26px;flex:none;}
   .hn-word-sm{font-size:15px;letter-spacing:0;text-transform:none;font-weight:700;}
@@ -90,7 +90,7 @@
   }
   .buddy-card{
     position:absolute;left:30px;right:30px;bottom:-34px;
-    background:linear-gradient(120deg, rgba(139,92,246,.1), rgba(34,182,222,.08));
+    background:linear-gradient(120deg, rgba(139,92,246,.1), rgba(34,182,222,.08)), #fff;
     border:2px solid var(--purple);border-radius:var(--radius-md);
     box-shadow:0 14px 34px -14px rgba(139,92,246,.45);
     padding:20px 24px;display:flex;align-items:center;gap:16px;
@@ -696,9 +696,9 @@
 <section id="landingScreen">
   <div class="landing-wrap">
     <div class="landing-brand"><svg class="hn-mark" viewBox="0 0 100 100" role="img" aria-label="HappyNutri logo"><use href="#hnMark"/></svg><span class="hn-word"><span class="hn-happy">Happy</span><span class="hn-nutri">Nutri</span></span></div>
-    <p class="landing-slogan">Eat colorful. Grow strong.</p>
-    <h1 class="landing-h1">One app. <span>Two ways</span> to get answers.</h1>
-    <p class="landing-sub">HappyNutri Explorer is the full app — and HappyNutri Buddy, the offline chat assistant, lives right inside it.</p>
+    <p class="landing-slogan">Fuel up. Level up. ⚡</p>
+    <h1 class="landing-h1">Food facts, <span>no cap.</span></h1>
+    <p class="landing-sub">Scroll 166 foods, win games, and ask Buddy your food questions. It’s all in one app, and most of it works offline.</p>
 
     <div class="landing-diagram">
       <div class="explorer-shell">
@@ -724,8 +724,8 @@
     </div>
 
     <div class="landing-cta-row">
-      <button class="landing-btn landing-btn-primary" id="landingOpenExplorerBtn" type="button">Open Nutrient Explorer →</button>
-      <button class="landing-btn landing-btn-secondary" id="landingOpenBuddyBtn" type="button">Chat with Buddy →</button>
+      <button class="landing-btn landing-btn-primary" id="landingOpenExplorerBtn" type="button">Let’s explore →</button>
+      <button class="landing-btn landing-btn-secondary" id="landingOpenBuddyBtn" type="button">Ask Buddy →</button>
     </div>
     <p class="landing-path-note">Buddy is also reachable inside the app anytime: <code>Planners → HappyNutri Buddy</code></p>
 
@@ -756,11 +756,11 @@
 
   <div class="hero">
     <div class="hero-text">
-      <p class="eyebrow"><svg class="hn-mark-sm" viewBox="0 0 100 100" aria-hidden="true"><use href="#hnMark"/></svg><span class="hn-word-sm"><span class="hn-happy">Happy</span><span class="hn-nutri">Nutri</span></span> Explorer <span class="hn-tag">· Eat colorful. Grow strong.</span></p>
-      <h1>Know what's really <span>in your food.</span></h1>
+      <p class="eyebrow"><svg class="hn-mark-sm" viewBox="0 0 100 100" aria-hidden="true"><use href="#hnMark"/></svg><span class="hn-word-sm"><span class="hn-happy">Happy</span><span class="hn-nutri">Nutri</span></span> Explorer <span class="hn-tag">· Fuel up. Level up.</span></p>
+      <h1>What’s <span>actually</span> in your food?</h1>
       <p class="quote-line"><span id="quoteText"></span><button class="quote-refresh" id="quoteRefreshBtn" type="button" aria-label="New quote" title="New quote">🔄</button></p>
     </div>
-    <button class="surprise-btn" id="surpriseBtn" type="button">🎲 Surprise me</button>
+    <button class="surprise-btn" id="surpriseBtn" type="button">🎲 Random food drop</button>
   </div>
 
   <nav class="main-tabs" id="mainTabs">
@@ -3191,7 +3191,7 @@
     if(m3FindMatches(s.grid).cells.size===0){
       m3Swap(s.grid,[sr,sc],[r,c]);
       s.sel=null;
-      renderMatch3('No match there — try another swap! (No move used)');
+      renderMatch3('No match there, so no move used. Try another swap!');
       return;
     }
     s.moves--; s.sel=null; s.busy=true;
@@ -3243,10 +3243,10 @@
       const bonus = s.moves*20;
       s.score += bonus;
       if(s.level>s.bestLevel) s.bestLevel = s.level;
-      msg = '🎉 Mission complete!'+(bonus?' +'+bonus+' bonus for spare moves.':'');
+      msg = '🏆 W! Mission complete!'+(bonus?' +'+bonus+' bonus for spare moves.':'');
     } else if(s.moves<=0){
       s.over = true;
-      msg = '😴 Out of moves — so close! Try again?';
+      msg = '😴 Oof, out of moves. Run it back?';
     } else if(!m3HasMove(s.grid)){
       s.grid = m3FreshGrid();
       msg = '🔀 No moves left — the board was shuffled!';
@@ -3291,7 +3291,7 @@
       x.addEventListener('click', fn); act.appendChild(x);
     }
     if(s.won) addBtn('➡️ Next level', function(){ m3Setup(s.level+1); });
-    if(s.over) addBtn('🔁 Try this level again', function(){ m3Setup(s.level); });
+    if(s.over) addBtn('🔁 Run this level back', function(){ m3Setup(s.level); });
     addBtn('🔀 New game', function(){ m3Setup(1); });
   }
 
