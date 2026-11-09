@@ -2,7 +2,7 @@
 // Strategy: serve from cache instantly when available, refresh the cache
 // in the background from the network, and fall back to cache if offline.
 
-const CACHE_NAME = 'happynutri-v10';
+const CACHE_NAME = 'happynutri-v11';
 
 self.addEventListener('install', () => {
   self.skipWaiting();

@@ -172,7 +172,7 @@
 
 
   /* ---------- Sticky top bar + page navigation ---------- */
-  .topbar{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.88);-webkit-backdrop-filter:saturate(1.4) blur(12px);backdrop-filter:saturate(1.4) blur(12px);border-bottom:1.5px solid var(--line);padding-top:env(safe-area-inset-top);}
+  .topbar{position:sticky;top:0;z-index:70;background:rgba(255,255,255,.88);-webkit-backdrop-filter:saturate(1.4) blur(12px);backdrop-filter:saturate(1.4) blur(12px);border-bottom:1.5px solid var(--line);padding-top:env(safe-area-inset-top);}
   .topbar-in{max-width:1440px;margin:0 auto;padding:4px 18px;display:flex;align-items:center;gap:16px;}
   .topbar-brand{display:flex;align-items:center;gap:8px;background:none;border:none;cursor:pointer;padding:4px 6px;border-radius:12px;flex:none;min-height:44px;}
   .hn-mark-top{width:34px;height:34px;}
@@ -221,6 +221,76 @@
     body{font-size:16px;}
     .wrap{padding-bottom:calc(60px + env(safe-area-inset-bottom));}
   }
+
+  /* ---------- Explorer: mobile-friendly ---------- */
+  .dice-btn,.sheet-bar,.sheet-backdrop{display:none;}
+  html.no-scroll,html.no-scroll body{overflow:hidden;}
+  @media (max-width:760px){
+    #exploreTab .hero{display:none;}
+    #exploreTab .controls{display:contents;}
+    #exploreTab .controls > *{margin-bottom:8px;}
+    .controls .search-row{display:flex;gap:8px;position:sticky;top:var(--topbar-h,0px);z-index:40;padding:8px 0 6px;background:rgba(243,249,255,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);margin-bottom:6px;}
+    .controls .search-input{flex:1 1 auto;min-width:0;padding:10px 14px;font-size:16px;min-height:46px;border-width:2px;}
+    .dice-btn{display:flex;align-items:center;justify-content:center;flex:none;width:46px;height:46px;border-radius:14px;border:none;background:var(--ink);font-size:22px;cursor:pointer;}
+    .dice-btn:active{transform:scale(.94);}
+    #exploreTab .type-toggle{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;margin-left:-12px;margin-right:-12px;padding:2px 12px 6px;gap:6px;scrollbar-width:none;}
+    .type-toggle::-webkit-scrollbar{display:none;}
+    #exploreTab .type-toggle .type-btn{flex:none;padding:8px 14px;min-height:40px;font-size:13.5px;border-width:2px;}
+    .more-filters summary{padding:6px 2px;}
+    .picker{grid-template-columns:repeat(4,1fr);gap:6px;margin:6px 0 20px;}
+    .fruitBadge{min-height:80px;padding:8px 2px 6px;}
+    .fruitBadge:hover{transform:none;box-shadow:none;}
+    .fruitBadge .fname{font-size:10.5px;}
+
+    .sheet-backdrop{display:block;position:fixed;inset:0;z-index:65;background:rgba(20,35,58,.45);opacity:0;pointer-events:none;transition:opacity .25s ease;}
+    .sheet-backdrop.show{opacity:1;pointer-events:auto;}
+    #detailPanel{position:fixed;left:0;right:0;bottom:0;top:calc(var(--topbar-h,90px) + 12px);z-index:80;margin:0;border-radius:24px 24px 0 0;border-width:0;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding:0 14px calc(28px + env(safe-area-inset-bottom));box-shadow:0 -14px 40px rgba(20,35,58,.28);transform:translateY(105%);visibility:hidden;transition:transform .3s cubic-bezier(.22,1,.36,1),visibility 0s .3s;}
+    #detailPanel.sheet-open{transform:none;visibility:visible;transition:transform .3s cubic-bezier(.22,1,.36,1);}
+    .sheet-bar{display:flex;align-items:center;gap:8px;position:sticky;top:0;z-index:2;background:#fff;padding:12px 0 10px;margin-bottom:4px;border-bottom:1.5px solid var(--line);}
+    .sheet-bar::before{content:'';position:absolute;top:5px;left:50%;width:38px;height:4px;margin-left:-19px;border-radius:4px;background:var(--line);}
+    .sheet-bar button{font-family:'Fredoka',sans-serif;font-weight:700;border:none;cursor:pointer;min-height:44px;border-radius:12px;color:var(--ink);background:#F0F6FF;}
+    .sheet-nav{width:44px;font-size:24px;line-height:1;}
+    .sheet-needs{flex:1;font-size:13.5px;padding:0 10px;color:var(--purple);}
+    #detailPanel .photo-wrap{flex:1 1 100%;width:100%;height:170px;}
+    #detailPanel .bloom-row{gap:12px;}
+    #detailPanel .bloom-wrap{flex:1 1 100%;}
+    .sheet-close{width:44px;font-size:18px;background:var(--ink) !important;color:#fff !important;}
+  }
+  /* ---------- Nutrition wheel ---------- */
+  .wheel-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap;background:linear-gradient(120deg,rgba(139,92,246,.08),rgba(95,191,46,.08)),#fff;border:2px solid var(--line);border-radius:var(--radius-md);padding:14px 16px;margin:0 0 16px;}
+  .wheel-wrap{flex:0 0 124px;width:124px;}
+  .wheel-svg{width:100%;height:auto;display:block;}
+  .wheel-emoji{font-size:30px;}
+  .wheel-arc{animation:wheelIn .7s cubic-bezier(.22,1,.36,1) both;animation-delay:var(--d,0ms);}
+  @keyframes wheelIn{from{opacity:0;}to{opacity:1;}}
+  .wheel-legend{flex:1 1 150px;min-width:0;}
+  @media (max-width:760px){.wheel-row{gap:12px;padding:12px;}.wheel-wrap{flex-basis:104px;width:104px;}.wheel-title{font-size:15px;}.wheel-sub{font-size:11.5px;}.wheel-leg{font-size:13px;gap:6px;}.wheel-leg .wl-pct{min-width:34px;}}
+  .wheel-title{font-family:'Fredoka',sans-serif;font-weight:700;font-size:16px;margin:0;}
+  .wheel-sub{font-size:12px;color:var(--muted);margin:2px 0 8px;font-weight:600;}
+  .wheel-leg{display:flex;align-items:center;gap:8px;font-size:14px;padding:3px 0;}
+  .wheel-leg .wl-name{flex:1;font-weight:700;}
+  .wheel-leg .wl-val{color:var(--muted);font-weight:700;}
+  .wheel-leg .wl-pct{min-width:40px;text-align:right;font-family:'Fredoka',sans-serif;font-weight:700;}
+  /* ---------- Simplified food detail ---------- */
+  .wheel-kcal{font-family:'Fredoka',sans-serif;font-weight:700;font-size:26px;fill:var(--ink);}
+  .wheel-kcal-l{font-size:8px;font-weight:700;fill:var(--muted);}
+  .detail-head{margin-top:2px;}
+  .detail-emoji-big{font-size:38px;}
+  .detail-name{font-size:24px;}
+  .top-nuts{margin:12px 0 4px;}
+  .tn-title{font-family:'Fredoka',sans-serif;font-weight:700;font-size:15px;margin:0 0 6px;}
+  .tn-row{display:flex;align-items:center;gap:10px;padding:4px 0;font-size:14px;}
+  .tn-name{flex:0 0 38%;font-weight:700;}
+  .tn-track{flex:1;height:10px;border-radius:999px;background:var(--line);overflow:hidden;}
+  .tn-fill{display:block;height:100%;border-radius:999px;}
+  .tn-pct{flex:0 0 42px;text-align:right;font-family:'Fredoka',sans-serif;font-weight:700;}
+  .tn-note{font-size:11.5px;color:var(--muted);font-weight:600;margin:4px 0 0;}
+  .more-detail{margin-top:14px;border-top:1.5px solid var(--line);padding-top:6px;}
+  .more-detail summary{font-family:'Fredoka',sans-serif;font-weight:700;font-size:14px;color:var(--purple);cursor:pointer;list-style:none;min-height:44px;display:flex;align-items:center;gap:6px;}
+  .more-detail summary::-webkit-details-marker{display:none;}
+  .more-detail summary::after{content:'\25be';}
+  .more-detail[open] summary::after{content:'\25b4';}
+  .more-detail .detail-serving{margin:2px 0 8px;color:var(--muted);font-size:13px;font-weight:600;}
   /* ---------- Hero ---------- */
   .hero{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:20px 4px 18px;flex-wrap:wrap;}
   .hero-text .eyebrow{font-family:'Fredoka',sans-serif;font-weight:600;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 4px;}
@@ -445,7 +515,8 @@
   .photo-credit{position:absolute;bottom:4px;right:6px;font-size:9px;color:#fff;background:rgba(43,33,24,.55);padding:2px 6px;border-radius:999px;font-weight:700;display:none;}
   .photo-wrap.has-photo .photo-credit{display:block;}
   .photo-wrap.has-photo .photo-fallback{display:none;}
-  .bloom-wrap{flex:0 0 300px;max-width:100%;}
+  .photo-wrap:not(.has-photo) img{display:none;}
+  .bloom-wrap{flex:0 0 380px;max-width:100%;}
   .bloom-svg{width:100%;height:auto;display:block;}
   .petal{opacity:0;transform:scale(0.001);transition:transform .65s var(--d,0ms) cubic-bezier(.34,1.56,.64,1), opacity .5s var(--d,0ms) ease;}
   .petal.show{opacity:1;transform:scale(1);}
@@ -832,6 +903,7 @@
     <div class="controls">
       <div class="search-row">
         <input class="search-input" id="searchInput" type="text" placeholder="🔍 Search fruits, veg, nuts, grains..." aria-label="Search">
+        <button class="dice-btn" id="surpriseBtnM" type="button" aria-label="Random food drop" title="Random food drop">🎲</button>
       </div>
       <div class="type-toggle" id="typeToggle"></div>
       <details class="more-filters">
@@ -852,6 +924,7 @@
 
     <div class="picker" id="picker" aria-label="Food picker"></div>
 
+    <div class="sheet-backdrop" id="sheetBackdrop"></div>
     <section class="panel detail" id="detailPanel" aria-live="polite"></section>
 
     <section class="panel compare" id="comparePanel" hidden></section>
@@ -2433,7 +2506,7 @@
         + '<text class="petal-label" x="'+lx.toFixed(1)+'" y="'+ly.toFixed(1)+'" text-anchor="'+anchor+'" dominant-baseline="middle">'+m.label+' '+val+m.unit+'</text>'
         + '</g>';
     }).join('');
-    return '<svg viewBox="0 0 300 300" class="bloom-svg" role="img" aria-label="'+fruit.name+' nutrient bloom chart">'
+    return '<svg viewBox="-85 0 470 300" class="bloom-svg" role="img" aria-label="'+fruit.name+' nutrient bloom chart">'
       + petals
       + '<circle cx="150" cy="150" r="'+centerR+'" fill="#fff" stroke="var(--ink)" stroke-width="3"></circle>'
       + '<text x="150" y="160" text-anchor="middle" class="bloom-emoji">'+fruit.emoji+'</text>'
@@ -2648,10 +2721,55 @@
       selected = [id];
     }
     renderExplore();
+    if(!compareMode) openSheet();
   }
 
   function renderDiscoveryLine(){
     discoveryLine.innerHTML = '🌟 You\u2019ve explored <b>'+viewedItems.size+'</b> of '+ITEMS.length+' items';
+  }
+
+  /* Nutrition wheel: where a food's calories come from (carbs/protein/fat, 4-4-9 kcal per gram) */
+  function buildWheel(fruit){
+    const parts = [
+      {label:'Carbs',   g:fruit.per100.carbs||0,   k:4, color:'var(--coral)'},
+      {label:'Protein', g:fruit.per100.protein||0, k:4, color:'var(--purple)'},
+      {label:'Fat',     g:fruit.per100.fat||0,     k:9, color:'var(--mango)'}
+    ];
+    parts.forEach(x=>{ x.kcal = x.g*x.k; });
+    const total = parts.reduce((a,x)=>a+x.kcal,0);
+    const R = 44, C = 2*Math.PI*R;
+    let off = 0, arcs = '';
+    parts.forEach((x,i)=>{
+      x.pct = total>0 ? x.kcal/total*100 : 0;
+      const len = total>0 ? x.kcal/total*C : 0;
+      if(len>0.5){
+        arcs += '<circle class="wheel-arc" cx="60" cy="60" r="'+R+'" fill="none" stroke="'+x.color+'" stroke-width="16" stroke-dasharray="'+Math.max(len-1.5,0.5).toFixed(2)+' '+(C-Math.max(len-1.5,0.5)).toFixed(2)+'" stroke-dashoffset="'+(-off).toFixed(2)+'" transform="rotate(-90 60 60)" style="--d:'+(i*120)+'ms"></circle>';
+      }
+      off += len;
+    });
+    const svg = '<svg class="wheel-svg" viewBox="0 0 120 120" role="img" aria-label="'+fruit.name+' calories by macronutrient">'
+      + '<circle cx="60" cy="60" r="'+R+'" fill="none" stroke="var(--line)" stroke-width="16"></circle>'
+      + arcs
+      + '<text x="60" y="62" text-anchor="middle" class="wheel-kcal" id="calNum">0</text>'
+      + '<text x="60" y="78" text-anchor="middle" class="wheel-kcal-l">kcal / 100 g</text>'
+      + '</svg>';
+    const legend = parts.map(x=>
+      '<div class="wheel-leg"><span class="legend-dot" style="background:'+x.color+'"></span><span class="wl-name">'+x.label+'</span><span class="wl-val">'+(Math.round(x.g*10)/10)+' g</span><span class="wl-pct">'+Math.round(x.pct)+'%</span></div>'
+    ).join('');
+    return '<div class="wheel-row">'
+      + '<div class="wheel-wrap">'+svg+'</div>'
+      + '<div class="wheel-legend"><p class="wheel-title">Nutritional value wheel</p><p class="wheel-sub">Share of calories</p>'+legend+'</div>'
+      + '</div>';
+  }
+
+  /* The three nutrients this food is richest in (by % of the daily value, per 100 g) */
+  function buildTopNutrients(fruit){
+    const rows = MICROS.filter(m=>m.key!=='cal' && m.dv>0).map(m=>({m:m, pct:(fruit.per100[m.key]||0)/m.dv*100}))
+      .filter(x=>x.pct>=1).sort((a,b)=>b.pct-a.pct).slice(0,3);
+    if(!rows.length) return '';
+    return '<div class="top-nuts"><p class="tn-title">Richest in</p>'
+      + rows.map(x=>'<div class="tn-row"><span class="tn-name">'+x.m.label+'</span><span class="tn-track"><span class="tn-fill" style="width:'+Math.min(100,x.pct).toFixed(0)+'%;background:'+x.m.color+'"></span></span><span class="tn-pct">'+Math.round(x.pct)+'%</span></div>').join('')
+      + '<p class="tn-note">% of daily value per 100 g</p></div>';
   }
 
   function renderDetail(){
@@ -2668,13 +2786,18 @@
     }).join(' · ');
 
     detailPanel.innerHTML =
-      '<div class="detail-head">'
+      '<div class="sheet-bar"><button class="sheet-nav" type="button" data-sheet="prev" aria-label="Previous food">\u2039</button><button class="sheet-nav" type="button" data-sheet="next" aria-label="Next food">\u203a</button><button class="sheet-needs" type="button" data-sheet="needs">\ud83d\udcca Daily needs</button><button class="sheet-close" type="button" data-sheet="close" aria-label="Close">\u2715</button></div>'
+      + buildWheel(fruit)
+      + '<div class="detail-head">'
       + '<div class="detail-id">'
       + '<span class="detail-emoji-big">'+fruit.emoji+'</span>'
-      + '<div><p class="detail-name">'+fruit.name+'<button class="fav-btn" id="favBtn" type="button" aria-pressed="'+isFav+'">'+(isFav?'❤️':'🤍')+'</button></p><p class="detail-serving">Typical serving: '+fruit.serving+'</p></div>'
+      + '<p class="detail-name">'+fruit.name+'<button class="fav-btn" id="favBtn" type="button" aria-pressed="'+isFav+'">'+(isFav?'❤️':'🤍')+'</button></p>'
       + '</div>'
-      + '<div class="cal-block"><div class="cal-num" id="calNum">0</div><div class="cal-label">kcal per 100 g</div></div>'
       + '</div>'
+      + buildTopNutrients(fruit)
+      + '<div class="fact-strip">🌱 <span>'+fruit.fact+'</span></div>'
+      + '<details class="more-detail"><summary>More details</summary>'
+      + '<p class="detail-serving">Typical serving: '+fruit.serving+'</p>'
       + '<div class="bloom-row">'
       + '<div class="photo-wrap loading" id="photoWrap"><img id="photoImg" alt="'+fruit.name+'"><span class="photo-fallback">'+fruit.emoji+'</span><span class="photo-credit">via Wikipedia</span></div>'
       + '<div class="bloom-wrap">'+bloomHtml+'</div>'
@@ -2683,7 +2806,7 @@
       + '<div class="pods-grid">'+pods+'</div>'
       + '<div class="prep-tag">🍽️ <b>How to eat it:</b> '+fruit.prep+'</div>'
       + '<div><span class="season-tag">📅 In season: '+seasonLabel+'</span></div>'
-      + '<div class="fact-strip">🌱 <span>'+fruit.fact+'</span></div>';
+      + '</details>';
 
     animatePetals(detailPanel);
     animateRings(detailPanel);
@@ -4080,6 +4203,7 @@
     if(tab==='discover') setDiscoverSub(discoverSub);
     if(tab==='planners') setPlannersSub(plannersSub);
     if(tab==='collect') renderCollect();
+    closeSheet(); syncTopbarH();
     setHash('#/'+TAB_HASH[tab]+(tab==='planners'?'/'+plannersSub:tab==='discover'?'/'+discoverSub:''));
     showPageEnter(tab);
   }
@@ -4198,6 +4322,7 @@
     setMainTab('explore');
     renderExplore();
     burstConfetti(surpriseBtn);
+    openSheet();
     document.getElementById('detailPanel').scrollIntoView({behavior:'smooth', block:'nearest'});
   });
 
@@ -4268,11 +4393,59 @@
     if(mq){ if(mq.addEventListener) mq.addEventListener('change', sync); sync(); }
   })();
 
+
+  /* ================= Explorer on mobile: bottom sheet for food details ================= */
+  const sheetBackdrop = document.getElementById('sheetBackdrop');
+  const sheetMQ = window.matchMedia ? window.matchMedia('(max-width:760px)') : null;
+  function isSheetMode(){ return !!(sheetMQ && sheetMQ.matches); }
+  function openSheet(){
+    if(!isSheetMode() || compareMode) return;
+    detailPanel.classList.add('sheet-open');
+    sheetBackdrop.classList.add('show');
+    document.documentElement.classList.add('no-scroll');
+    detailPanel.scrollTop = 0;
+  }
+  function closeSheet(){
+    detailPanel.classList.remove('sheet-open');
+    sheetBackdrop.classList.remove('show');
+    document.documentElement.classList.remove('no-scroll');
+  }
+  function stepFood(dir){
+    const list = filteredItems();
+    if(!list.length) return;
+    const idx = list.findIndex(x=>x.id===selected[0]);
+    const nxt = idx<0 ? list[0] : list[(idx+dir+list.length)%list.length];
+    onPick(nxt.id);
+  }
+  detailPanel.addEventListener('click', e=>{
+    const t = e.target.closest ? e.target.closest('[data-sheet]') : null;
+    if(!t) return;
+    const a = t.getAttribute('data-sheet');
+    if(a==='close') closeSheet();
+    else if(a==='prev') stepFood(-1);
+    else if(a==='next') stepFood(1);
+    else if(a==='needs'){
+      closeSheet();
+      setRdaCollapsed(false); rdaAside.dataset.touched = '1';
+      try{ window.scrollTo({top:0, behavior:'smooth'}); }catch(err){ window.scrollTo(0,0); }
+    }
+  });
+  sheetBackdrop.addEventListener('click', closeSheet);
+  document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeSheet(); });
+  if(sheetMQ && sheetMQ.addEventListener) sheetMQ.addEventListener('change', closeSheet);
+  document.getElementById('surpriseBtnM').addEventListener('click', ()=>surpriseBtn.click());
+  function syncTopbarH(){
+    const tb = document.getElementById('topbar');
+    document.documentElement.style.setProperty('--topbar-h', (tb && !tb.hidden ? tb.offsetHeight : 0)+'px');
+  }
+  window.addEventListener('resize', syncTopbarH);
+
   /* ================= Landing screen ================= */
   function enterApp(jumpToBuddy, skipTab){
     document.getElementById('landingScreen').hidden = true;
     document.getElementById('mainAppWrap').hidden = false;
     document.getElementById('topbar').hidden = false;
+    syncTopbarH();
     if(!jumpToBuddy && !skipTab) setMainTab('explore');
     if(jumpToBuddy){
       setMainTab('planners');
