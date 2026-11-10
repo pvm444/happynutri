@@ -401,6 +401,43 @@
   }
   @media (prefers-reduced-motion: reduce){ .recipe-card.flash{animation:none;outline:3px solid var(--coral);} .hn-toast{transition:none;} }
 
+  /* ---------- Fruit Shooter ---------- */
+  .fs-arena{position:relative;height:min(62vh,480px);min-height:340px;max-width:640px;margin:0 auto 10px;border-radius:20px;overflow:hidden;
+    background:linear-gradient(180deg,#E8F6FF 0%,#F3ECFF 100%);border:3px solid var(--line);touch-action:manipulation;user-select:none;-webkit-user-select:none;}
+  .fs-field{position:absolute;inset:0;}
+  .fs-item{position:absolute;left:0;top:0;width:58px;height:58px;font-size:42px;line-height:1;display:flex;align-items:center;justify-content:center;
+    background:none;border:none;padding:0;cursor:crosshair;will-change:transform;-webkit-tap-highlight-color:transparent;}
+  .fs-item:focus-visible{outline:3px solid var(--coral);border-radius:50%;}
+  .fs-item.hit{transition:opacity .25s ease,filter .25s ease;opacity:0;filter:blur(2px);}
+  .fs-item.hit.good::after,.fs-item.hit.bad::after{content:'';position:absolute;inset:-6px;border-radius:50%;border:3px solid;animation:fsRing .26s ease-out forwards;}
+  .fs-item.hit.good::after{border-color:var(--lime);} .fs-item.hit.bad::after{border-color:var(--bad);}
+  @keyframes fsRing{from{transform:scale(.5);opacity:1;}to{transform:scale(1.4);opacity:0;}}
+  .fs-float{position:absolute;left:0;top:0;font-family:'Fredoka',sans-serif;font-weight:700;font-size:18px;pointer-events:none;animation:fsUp .9s ease-out forwards;white-space:nowrap;}
+  .fs-float.good{color:var(--lime);} .fs-float.bad{color:var(--bad);}
+  @keyframes fsUp{to{margin-top:-46px;opacity:0;}}
+  .fs-meter{position:absolute;top:10px;right:10px;z-index:3;display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.92);border:2px solid var(--line);
+    border-radius:16px;padding:6px 10px 6px 6px;box-shadow:0 6px 18px rgba(76,29,149,.15);pointer-events:none;}
+  .fs-meter.up{border-color:rgba(229,72,77,.5);}
+  .fs-meter.shake{animation:fsShake .35s ease;}
+  @keyframes fsShake{25%{transform:translateX(-4px);}75%{transform:translateX(4px);}}
+  .fs-person{width:40px;height:58px;}
+  .fs-person ellipse{transition:rx .3s ease;}
+  .fs-meter-info{display:flex;flex-direction:column;gap:3px;min-width:84px;}
+  .fs-meter-info b{font-family:'Fredoka',sans-serif;font-size:20px;line-height:1;}
+  .fs-meter-info small{font-size:10.5px;font-weight:700;color:var(--muted);}
+  .fs-meter-track{display:block;height:7px;border-radius:999px;background:var(--line);overflow:hidden;}
+  #fsMeterFill{display:block;height:100%;width:0;background:var(--lime);border-radius:999px;transition:width .3s ease;}
+  .fs-pause{cursor:pointer;font:inherit;font-weight:700;min-height:36px;}
+  .fs-overlay{position:absolute;inset:0;z-index:5;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(30,21,54,.35);}
+  .fs-overlay[hidden]{display:none;}
+  .fs-ov-card{background:#fff;border-radius:20px;padding:22px 20px;text-align:center;max-width:360px;box-shadow:var(--shadow);}
+  .fs-ov-card h3{font-family:'Fredoka',sans-serif;margin:4px 0 8px;font-size:21px;}
+  .fs-ov-card p{margin:0 0 12px;font-size:14px;color:var(--muted);line-height:1.5;}
+  .fs-ov-card p b{color:var(--ink);}
+  .fs-ov-emoji{font-size:40px;}
+  .fs-ov-goal{font-weight:700;color:var(--purple) !important;}
+  .fs-msg{text-align:center;min-height:22px;font-weight:700;font-size:14px;color:var(--muted);margin:4px 0 0;}
+  @media (max-width:640px){ .fs-item{width:50px;height:50px;font-size:36px;} .fs-meter-info b{font-size:17px;} .fs-meter-info{min-width:70px;} .fs-person{width:32px;height:46px;} }
   /* ---------- Nutrition wheel ---------- */
   .wheel-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap;background:linear-gradient(120deg,rgba(139,92,246,.08),rgba(43,140,39,.08)),#fff;border:2px solid var(--line);border-radius:var(--radius-md);padding:14px 16px;margin:0 0 16px;}
   .wheel-wrap{flex:0 0 124px;width:124px;}
@@ -1111,6 +1148,7 @@
         <button class="game-pick-btn" data-play-game="speedsort" type="button"><span class="gp-emoji">⚡</span><span class="gp-label">Speed Sort</span></button>
         <button class="game-pick-btn" data-play-game="truefalse" type="button"><span class="gp-emoji">✅</span><span class="gp-label">True or False</span></button>
         <button class="game-pick-btn" data-play-game="match3" type="button"><span class="gp-emoji">🍓</span><span class="gp-label">Food Crush</span></button>
+        <button class="game-pick-btn" data-play-game="shooter" type="button"><span class="gp-emoji">🎯</span><span class="gp-label">Fruit Shooter</span></button>
       </div>
 
       <div id="guessGameArea">
@@ -1159,6 +1197,33 @@
           <span class="score-pill">✅ Correct: <b id="tfCorrect">0</b> / <b id="tfTotal">0</b></span>
         </div>
         <div class="game-card" id="tfCard"></div>
+      </div>
+
+      <div id="shooterArea" hidden>
+        <p class="game-intro">Shoot only the fruit! Every fruit you hit is −5 kg, every junk food is +5 kg. Get from 150 kg down to 50 kg to win.</p>
+        <div class="game-scorebar">
+          <span class="score-pill">🍎 Fruit: <b id="fsShots">0</b></span>
+          <span class="score-pill">🍔 Junk: <b id="fsJunk">0</b></span>
+          <span class="score-pill">⏱️ Time: <b id="fsTime">0:00</b></span>
+          <span class="score-pill">🏆 Best: <b id="fsBest">—</b></span>
+          <button class="score-pill fs-pause" type="button" data-fs="pause">⏸ Pause</button>
+        </div>
+        <div class="fs-arena" id="fsArena">
+          <div class="fs-field" id="fsField"></div>
+          <div class="fs-meter" id="fsMeter" aria-live="polite">
+            <svg class="fs-person" viewBox="0 0 44 64" aria-hidden="true">
+              <line x1="22" y1="44" x2="16" y2="60" stroke="#3B2E5A" stroke-width="4" stroke-linecap="round"/>
+              <line x1="22" y1="44" x2="28" y2="60" stroke="#3B2E5A" stroke-width="4" stroke-linecap="round"/>
+              <ellipse id="fsBody" cx="22" cy="34" rx="13" ry="13" fill="#7C3AED"/>
+              <circle cx="22" cy="12" r="8" fill="#F6C9A0"/>
+              <circle cx="19" cy="11" r="1.1" fill="#1E1536"/><circle cx="25" cy="11" r="1.1" fill="#1E1536"/>
+              <path d="M18.5 14.5 Q22 17.5 25.5 14.5" stroke="#1E1536" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+            </svg>
+            <div class="fs-meter-info"><b id="fsKg">150 kg</b><span class="fs-meter-track"><span id="fsMeterFill"></span></span><small>Goal: 50 kg</small></div>
+          </div>
+          <div class="fs-overlay" id="fsOverlay" hidden></div>
+        </div>
+        <p class="fs-msg" id="fsMsg" aria-live="polite"></p>
       </div>
 
       <div id="match3Area" hidden>
@@ -3896,13 +3961,192 @@
     document.getElementById('speedSortArea').hidden = game!=='speedsort';
     document.getElementById('trueFalseArea').hidden = game!=='truefalse';
     document.getElementById('match3Area').hidden = game!=='match3';
+    document.getElementById('shooterArea').hidden = game!=='shooter';
+    if(game!=='shooter') fsPause();
     if(game==='guess' && !gameState.current) renderGame();
     if(game==='memory' && memoryState.cards.length===0) startMemoryGame();
     if(game==='speedsort') renderSpeedSort();
     if(game==='truefalse') renderTrueFalse();
     if(game==='match3'){ if(match3State.grid.length===0) m3Setup(1); else renderMatch3(); }
+    if(game==='shooter') renderShooter();
   }
 
+
+  /* ================= Game 6: Fruit Shooter ================= */
+  const FS_START = 150, FS_GOAL = 50, FS_MAX = 200, FS_STEP = 5;
+  const FS_JUNK = [
+    {emoji:'🍔', name:'Burger'}, {emoji:'🍟', name:'Fries'}, {emoji:'🌭', name:'Hot dog'}, {emoji:'🍩', name:'Doughnut'},
+    {emoji:'🍪', name:'Cookie'}, {emoji:'🍫', name:'Chocolate bar'}, {emoji:'🍬', name:'Candy'}, {emoji:'🍭', name:'Lollipop'},
+    {emoji:'🧁', name:'Cupcake'}, {emoji:'🥤', name:'Soda'}, {emoji:'🍰', name:'Cake'}, {emoji:'🍦', name:'Ice cream'},
+  ];
+  const fsState = { running:false, over:false, won:false, weight:FS_START, items:[], raf:0, lastT:0, spawnIn:0,
+    hits:0, junkHits:0, shots:0, startT:0, elapsed:0, best:null, uid:0 };
+  try{ const b = Number(localStorage.getItem('happynutri-fs-best')); if(b>0) fsState.best = b; }catch(err){}
+  function fsFruits(){
+    const seen = new Set();
+    return ITEMS.filter(i=>{
+      if(i.type!=='fruit' || !i.emoji || seen.has(i.emoji)) return false;
+      const cp = i.emoji.codePointAt(0);
+      const ok = (cp>=0x1F345 && cp<=0x1F353) || [0x1F951,0x1F965,0x1F96D,0x1FAD0,0x1FAD2].indexOf(cp)>-1;
+      if(!ok) return false;
+      seen.add(i.emoji); return true;
+    });
+  }
+  const fsArena = document.getElementById('fsArena');
+  const fsField = document.getElementById('fsField');
+  function fsFmtTime(ms){ const s = Math.round(ms/1000); return Math.floor(s/60)+':'+String(s%60).padStart(2,'0'); }
+  function fsRenderMeter(){
+    const w = fsState.weight;
+    document.getElementById('fsKg').textContent = w+' kg';
+    // Progress from 150 → 50 kg
+    const pct = Math.max(0, Math.min(100, (FS_START - w)/(FS_START - FS_GOAL)*100));
+    document.getElementById('fsMeterFill').style.width = pct+'%';
+    // Friendly character: body gets wider or slimmer with the weight
+    const scale = 0.7 + (Math.min(FS_MAX, w) - FS_GOAL)/(FS_MAX - FS_GOAL)*0.75;
+    document.getElementById('fsBody').setAttribute('rx', (13*scale).toFixed(1));
+    document.getElementById('fsMeter').classList.toggle('up', w>FS_START);
+    document.getElementById('fsShots').textContent = fsState.hits;
+    document.getElementById('fsJunk').textContent = fsState.junkHits;
+    document.getElementById('fsTime').textContent = fsFmtTime(fsState.elapsed);
+    document.getElementById('fsBest').textContent = fsState.best ? fsFmtTime(fsState.best) : '—';
+  }
+  function fsOverlay(html){
+    const o = document.getElementById('fsOverlay');
+    if(!html){ o.hidden = true; return; }
+    o.innerHTML = html; o.hidden = false;
+  }
+  function fsShowStart(){
+    fsOverlay('<div class="fs-ov-card"><div class="fs-ov-emoji">🎯🍎</div><h3>Fruit Shooter</h3>'
+      + '<p>Tap the <b>fruit</b> to shoot it: each one is <b>−5 kg</b>.<br>Don’t shoot junk food: that’s <b>+5 kg</b>.</p>'
+      + '<p class="fs-ov-goal">Start at '+FS_START+' kg · reach '+FS_GOAL+' kg to win</p>'
+      + '<button class="shuffle-btn" type="button" data-fs="start">▶ Start</button></div>');
+  }
+  function fsClear(){ fsState.items.forEach(it=>it.el.remove()); fsState.items = []; }
+  function fsStart(){
+    cancelAnimationFrame(fsState.raf);
+    fsClear();
+    Object.assign(fsState, {running:true, over:false, won:false, weight:FS_START, hits:0, junkHits:0, shots:0, elapsed:0, spawnIn:300, lastT:0});
+    fsOverlay(null);
+    fsRenderMeter();
+    fsState.raf = requestAnimationFrame(fsTick);
+  }
+  function fsPause(){
+    if(!fsState.running) return;
+    fsState.running = false;
+    cancelAnimationFrame(fsState.raf);
+    fsOverlay('<div class="fs-ov-card"><div class="fs-ov-emoji">⏸️</div><h3>Paused</h3><p>Weight: <b>'+fsState.weight+' kg</b></p>'
+      + '<button class="shuffle-btn" type="button" data-fs="resume">▶ Resume</button> <button class="mp-btn" type="button" data-fs="start">↺ Restart</button></div>');
+  }
+  function fsResume(){
+    if(fsState.over || fsState.running) return;
+    fsState.running = true; fsState.lastT = 0; fsOverlay(null);
+    fsState.raf = requestAnimationFrame(fsTick);
+  }
+  function fsEnd(won){
+    fsState.running = false; fsState.over = true; fsState.won = won;
+    cancelAnimationFrame(fsState.raf);
+    fsClear();
+    const acc = fsState.shots ? Math.round(fsState.hits/fsState.shots*100) : 0;
+    let newBest = false;
+    if(won && (!fsState.best || fsState.elapsed < fsState.best)){
+      fsState.best = fsState.elapsed; newBest = true;
+      try{ localStorage.setItem('happynutri-fs-best', String(Math.round(fsState.elapsed))); }catch(err){}
+    }
+    fsRenderMeter();
+    fsOverlay(won
+      ? '<div class="fs-ov-card"><div class="fs-ov-emoji">🏆</div><h3>You reached '+FS_GOAL+' kg!</h3>'
+        + '<p>Time: <b>'+fsFmtTime(fsState.elapsed)+'</b>'+(newBest?' · <b>New best!</b>':'')+'<br>🍎 Fruit shot: <b>'+fsState.hits+'</b> · 🍔 Junk shot: <b>'+fsState.junkHits+'</b> · 🎯 '+acc+'% accurate</p>'
+        + '<button class="shuffle-btn" type="button" data-fs="start">🔁 Play again</button></div>'
+      : '<div class="fs-ov-card"><div class="fs-ov-emoji">😅</div><h3>Too much junk food!</h3>'
+        + '<p>The weight reached '+FS_MAX+' kg. Shoot only the fruit and try again.</p>'
+        + '<button class="shuffle-btn" type="button" data-fs="start">🔁 Try again</button></div>');
+    if(won) burstConfetti(document.getElementById('fsMeter'));
+  }
+  function fsSpawn(W, H){
+    const progress = (FS_START - Math.min(FS_START, fsState.weight))/(FS_START - FS_GOAL);
+    const junk = Math.random() < 0.4;
+    const pool = junk ? FS_JUNK : fsFruits();
+    const pick = pool[Math.floor(Math.random()*pool.length)];
+    const size = W < 420 ? 50 : 58;
+    const el = document.createElement('button');
+    el.type = 'button';
+    el.className = 'fs-item';
+    el.textContent = pick.emoji;
+    el.setAttribute('aria-label', (junk?'Junk food: ':'Fruit: ')+pick.name);
+    const it = { id:++fsState.uid, el, junk, name:pick.name, x: 8 + Math.random()*Math.max(10, W - size - 16 - (W<420?0:0)),
+      y: -size, vy: (H/ (4.2 - progress*1.6)) * (0.85 + Math.random()*0.3), size, dead:false };
+    el.style.transform = 'translate('+it.x+'px,'+it.y+'px)';
+    el.addEventListener('pointerdown', e=>{ e.preventDefault(); fsShoot(it); });
+    el.addEventListener('keydown', e=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); fsShoot(it); } });
+    fsField.appendChild(el);
+    fsState.items.push(it);
+  }
+  function fsFloat(it, text, cls){
+    const f = document.createElement('span');
+    f.className = 'fs-float '+cls;
+    f.textContent = text;
+    f.style.transform = 'translate('+(it.x+it.size/2-24)+'px,'+(it.y+10)+'px)';
+    fsField.appendChild(f);
+    setTimeout(()=>f.remove(), 900);
+  }
+  function fsShoot(it){
+    if(!fsState.running || it.dead) return;
+    it.dead = true;
+    fsState.shots++;
+    it.el.classList.add('hit', it.junk ? 'bad' : 'good');
+    setTimeout(()=>it.el.remove(), 260);
+    if(it.junk){
+      fsState.junkHits++;
+      fsState.weight = Math.min(FS_MAX, fsState.weight + FS_STEP);
+      fsFloat(it, '+'+FS_STEP+' kg', 'bad');
+      document.getElementById('fsMeter').classList.remove('shake'); void fsArena.offsetWidth;
+      document.getElementById('fsMeter').classList.add('shake');
+    } else {
+      fsState.hits++;
+      fsState.weight = Math.max(FS_GOAL, fsState.weight - FS_STEP);
+      fsFloat(it, '−'+FS_STEP+' kg', 'good');
+    }
+    document.getElementById('fsMsg').textContent = it.junk ? it.el.textContent+' '+it.name+' is junk food: +'+FS_STEP+' kg' : it.el.textContent+' '+it.name+'! −'+FS_STEP+' kg';
+    fsRenderMeter();
+    if(fsState.weight <= FS_GOAL) fsEnd(true);
+    else if(fsState.weight >= FS_MAX) fsEnd(false);
+  }
+  function fsTick(t){
+    if(!fsState.running) return;
+    if(!fsArena.offsetParent){ fsPause(); return; }   // left the game: pause
+    if(!fsState.lastT) fsState.lastT = t;
+    const dt = Math.min(50, t - fsState.lastT); fsState.lastT = t;
+    fsState.elapsed += dt;
+    const W = fsField.clientWidth, H = fsField.clientHeight;
+    fsState.spawnIn -= dt;
+    if(fsState.spawnIn <= 0){
+      fsSpawn(W, H);
+      const progress = (FS_START - Math.min(FS_START, fsState.weight))/(FS_START - FS_GOAL);
+      fsState.spawnIn = 900 - progress*350 + Math.random()*250;
+    }
+    fsState.items = fsState.items.filter(it=>{
+      if(it.dead) return false;
+      it.y += it.vy*dt/1000;
+      if(it.y > H){ it.el.remove(); return false; }
+      it.el.style.transform = 'translate('+it.x+'px,'+it.y+'px)';
+      return true;
+    });
+    if(Math.floor(fsState.elapsed/1000) !== Math.floor((fsState.elapsed-dt)/1000)) document.getElementById('fsTime').textContent = fsFmtTime(fsState.elapsed);
+    fsState.raf = requestAnimationFrame(fsTick);
+  }
+  document.getElementById('shooterArea').addEventListener('click', e=>{
+    const b = e.target.closest ? e.target.closest('[data-fs]') : null;
+    if(!b) return;
+    const a = b.getAttribute('data-fs');
+    if(a==='start') fsStart();
+    else if(a==='resume') fsResume();
+    else if(a==='pause') fsPause();
+  });
+  document.addEventListener('visibilitychange', ()=>{ if(document.hidden) fsPause(); });
+  function renderShooter(){
+    fsRenderMeter();
+    if(!fsState.running && !fsState.over && !fsState.elapsed) fsShowStart();
+  }
 
   /* ================= Game 5: Food Crush (match-3) ================= */
   const M3_N = 7, M3_KINDS = 6, M3_MOVES = 20;
