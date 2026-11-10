@@ -191,13 +191,24 @@
   .rda-toggle{display:none;}
 
   @media (max-width:760px){
-    .topbar-in{flex-wrap:wrap;gap:0 8px;padding:4px 10px 2px;}
-    .topbar-brand{min-height:38px;}
+    /* Slim top bar; tabs move to a bottom bar within thumb reach. No backdrop-filter here, so the fixed bar is placed against the screen. */
+    .topbar{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(255,255,255,.97);}
+    .topbar-in{padding:4px 12px;justify-content:center;}
+    .topbar-brand{min-height:40px;}
     .hn-mark-top{width:26px;height:26px;} .hn-word-top{font-size:17px;}
-    .topbar .main-tabs{flex:1 1 100%;order:3;justify-content:stretch;display:grid;grid-template-columns:repeat(5,1fr);gap:0;}
-    .topbar .maintab{flex-direction:column;gap:1px;padding:4px 2px 7px;font-size:10.5px;min-height:44px;justify-content:center;}
-    .topbar .maintab::after{left:22%;right:22%;bottom:1px;height:2.5px;}
-    .topbar .maintab .mt-e{font-size:17px;}
+    .topbar .main-tabs{position:fixed;left:0;right:0;bottom:0;z-index:60;display:grid;grid-template-columns:repeat(5,1fr);gap:0;
+      background:rgba(255,255,255,.98);border-top:1.5px solid var(--line);box-shadow:0 -8px 24px -12px rgba(76,29,149,.25);
+      padding:6px 6px calc(6px + env(safe-area-inset-bottom));}
+    .topbar .maintab.mt-desk{display:none;}
+    .topbar .maintab{flex-direction:column;gap:2px;padding:6px 2px;font-size:10.5px;min-height:52px;justify-content:center;border-radius:14px;}
+    .topbar .maintab::after{display:none;}
+    .topbar .maintab::before{content:'';position:absolute;inset:3px 10%;border-radius:14px;background:var(--tab-c);opacity:0;transform:scale(.6);transition:opacity .2s ease,transform .25s cubic-bezier(.34,1.56,.64,1);z-index:-1;}
+    .topbar .maintab.active::before{opacity:.13;transform:scale(1);}
+    .topbar .maintab{z-index:0;}
+    .topbar .maintab .mt-e{font-size:21px;transition:transform .25s cubic-bezier(.34,1.56,.64,1);}
+    .topbar .maintab.active .mt-e{transform:translateY(-2px) scale(1.12);}
+    .wrap{padding-bottom:calc(96px + env(safe-area-inset-bottom)) !important;}
+    .hn-toast{bottom:calc(86px + env(safe-area-inset-bottom));}
   }
   @media (max-width:960px){
     #mainAppWrap{padding:10px 12px 60px;gap:14px;}
@@ -438,6 +449,50 @@
   .fs-ov-goal{font-weight:700;color:var(--purple) !important;}
   .fs-msg{text-align:center;min-height:22px;font-weight:700;font-size:14px;color:var(--muted);margin:4px 0 0;}
   @media (max-width:640px){ .fs-item{width:50px;height:50px;font-size:36px;} .fs-meter-info b{font-size:17px;} .fs-meter-info{min-width:70px;} .fs-person{width:32px;height:46px;} }
+  /* ---------- Home ---------- */
+  #homeTab{max-width:760px;margin:0 auto;}
+  .home-hello h1{font-family:'Fredoka',sans-serif;font-weight:700;font-size:clamp(24px,6vw,32px);margin:6px 0 2px;letter-spacing:-.01em;}
+  .home-hello p{margin:0 0 16px;color:var(--muted);font-size:15px;}
+  .home-fod{display:flex;align-items:center;gap:14px;width:100%;text-align:left;cursor:pointer;font:inherit;color:var(--ink);
+    background:linear-gradient(120deg,#fff 0%,#F5EEFF 100%);border:2px solid var(--line);border-radius:22px;padding:16px;margin-bottom:12px;box-shadow:var(--shadow);}
+  .fod-emoji{font-size:56px;line-height:1;flex:none;animation:fodFloat 3.2s ease-in-out infinite;}
+  @keyframes fodFloat{0%,100%{transform:translateY(0) rotate(-4deg);}50%{transform:translateY(-6px) rotate(4deg);}}
+  .fod-text{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px;}
+  .fod-text small{font-size:11px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--coral);}
+  .fod-text b{font-family:'Fredoka',sans-serif;font-size:20px;}
+  .fod-text span{font-size:13px;color:var(--muted);line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+  .fod-go{flex:none;width:36px;height:36px;border-radius:50%;background:var(--coral);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;}
+  .home-today{display:block;width:100%;text-align:left;cursor:pointer;font:inherit;color:var(--ink);background:#F1FAF0;border:2px solid rgba(43,140,39,.25);border-radius:18px;padding:12px 14px;margin-bottom:6px;}
+  .home-today small{display:block;font-size:12px;font-weight:800;color:var(--lime);margin-bottom:6px;}
+  .home-today > span{display:flex;flex-wrap:wrap;gap:6px;}
+  .ht-meal{background:#fff;border-radius:999px;padding:4px 10px;font-size:12.5px;font-weight:700;border:1.5px solid var(--line);}
+  .home-sec{margin-top:18px;}
+  .home-sec h2{font-family:'Fredoka',sans-serif;font-size:17px;font-weight:700;margin:0 2px 10px;display:flex;align-items:baseline;gap:8px;}
+  .home-sec h2 span{font-family:inherit;font-size:12px;font-weight:700;color:var(--muted);}
+  .home-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+  .home-tile{display:flex;flex-direction:column;align-items:flex-start;gap:10px;text-align:left;cursor:pointer;font:inherit;color:var(--ink);
+    background:var(--tile-c,#fff);border:none;border-radius:20px;padding:14px;min-height:118px;transition:transform .18s cubic-bezier(.34,1.56,.64,1),box-shadow .18s ease;}
+  .home-tile:hover{transform:translateY(-3px);box-shadow:0 10px 22px -12px rgba(76,29,149,.35);}
+  .home-tile:active,.home-fod:active,.home-today:active{transform:scale(.96);}
+  .home-tile:focus-visible,.home-fod:focus-visible,.home-today:focus-visible{outline:3px solid var(--coral);outline-offset:2px;}
+  .ht-emoji{font-size:30px;line-height:1;width:48px;height:48px;border-radius:14px;background:rgba(255,255,255,.75);display:flex;align-items:center;justify-content:center;transition:transform .3s cubic-bezier(.34,1.56,.64,1);}
+  .home-tile:hover .ht-emoji,.home-tile:active .ht-emoji{transform:rotate(-10deg) scale(1.1);}
+  .ht-text{display:flex;flex-direction:column;gap:2px;}
+  .ht-text b{font-family:'Fredoka',sans-serif;font-weight:700;font-size:15px;line-height:1.2;}
+  .ht-text small{font-size:12px;color:var(--muted);font-weight:600;line-height:1.3;}
+  .rise{animation:homeRise .5s cubic-bezier(.22,1,.36,1) both;animation-delay:var(--d,0ms);}
+  @keyframes homeRise{from{opacity:0;transform:translateY(14px) scale(.97);}to{opacity:1;transform:none;}}
+  .page-enter-back{animation:pageInBack .3s cubic-bezier(.22,1,.36,1);}
+  @keyframes pageInBack{from{opacity:0;transform:translateX(-18px);}to{opacity:1;transform:none;}}
+  @media (max-width:760px){
+    .home-grid{grid-template-columns:1fr 1fr;}
+    .page-enter{animation:pageInFwd .3s cubic-bezier(.22,1,.36,1);}
+    @keyframes pageInFwd{from{opacity:0;transform:translateX(18px);}to{opacity:1;transform:none;}}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .fod-emoji,.rise,.page-enter,.page-enter-back{animation:none !important;}
+    .home-tile,.ht-emoji,.topbar .maintab::before,.topbar .maintab .mt-e{transition:none !important;}
+  }
   /* ---------- Nutrition wheel ---------- */
   .wheel-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap;background:linear-gradient(120deg,rgba(139,92,246,.08),rgba(43,140,39,.08)),#fff;border:2px solid var(--line);border-radius:var(--radius-md);padding:14px 16px;margin:0 0 16px;}
   .wheel-wrap{flex:0 0 124px;width:124px;}
@@ -1087,16 +1142,18 @@
   <div class="topbar-in">
     <button class="topbar-brand" id="topbarHome" type="button" aria-label="HappyNutri home"><svg class="hn-mark-top" viewBox="0 0 100 100" aria-hidden="true"><use href="#hnMark"/></svg><span class="hn-word-top"><span class="hn-happy">Happy</span><span class="hn-nutri">Nutri</span></span></button>
   <nav class="main-tabs" id="mainTabs" aria-label="Pages">
-    <button class="maintab active" data-tab="explore" type="button" style="--tab-c:var(--coral)"><span class="mt-e">🔎</span><span class="mt-l">Explore</span></button>
+    <button class="maintab active" data-tab="home" type="button" style="--tab-c:var(--coral)"><span class="mt-e">🏠</span><span class="mt-l">Home</span></button>
+    <button class="maintab" data-tab="explore" type="button" style="--tab-c:var(--coral)"><span class="mt-e">🔎</span><span class="mt-l">Explore</span></button>
     <button class="maintab" data-tab="game" type="button" style="--tab-c:var(--lime)"><span class="mt-e">🎮</span><span class="mt-l">Play</span></button>
     <button class="maintab" data-tab="discover" type="button" style="--tab-c:var(--purple)"><span class="mt-e">🧭</span><span class="mt-l">Discover</span></button>
-    <button class="maintab" data-tab="planners" type="button" style="--tab-c:var(--sky)"><span class="mt-e">📋</span><span class="mt-l">Planners</span></button>
-    <button class="maintab" data-tab="collect" type="button" style="--tab-c:var(--pink)"><span class="mt-e">⭐</span><span class="mt-l">Collect</span></button>
+    <button class="maintab" data-tab="planners" type="button" style="--tab-c:var(--sky)"><span class="mt-e">🗓️</span><span class="mt-l">Plan</span></button>
+    <button class="maintab mt-desk" data-tab="collect" type="button" style="--tab-c:var(--pink)"><span class="mt-e">⭐</span><span class="mt-l">Collect</span></button>
   </nav>
   </div>
 </header>
 <div class="wrap" id="mainAppWrap" hidden>
   <div class="main-col">
+  <section id="homeTab" hidden></section>
 
 
 
@@ -5592,6 +5649,7 @@
   function setMainTab(tab){
     mainTab = tab;
     document.querySelectorAll('.maintab').forEach(b=>b.classList.toggle('active', b.getAttribute('data-tab')===tab));
+    document.getElementById('homeTab').hidden = tab!=='home';
     document.getElementById('exploreTab').hidden = tab!=='explore';
     document.getElementById('gameTab').hidden = tab!=='game';
     document.getElementById('discoverTab').hidden = tab!=='discover';
@@ -5607,6 +5665,7 @@
     if(tab==='discover') setDiscoverSub(discoverSub);
     if(tab==='planners') setPlannersSub(plannersSub);
     if(tab==='collect') renderCollect();
+    if(tab==='home') renderHome();
     closeSheet(); syncTopbarH();
     setHash('#/'+TAB_HASH[tab]+(tab==='planners'?'/'+plannersSub:tab==='discover'?'/'+discoverSub:''));
     showPageEnter(tab);
@@ -5739,10 +5798,84 @@
   renderExplore();
 
 
+  /* ================= Home: the starting point for kids and parents ================= */
+  const TAB_ORDER = ['home','explore','game','discover','planners','collect'];
+  let lastTabForAnim = 'home';
+  function homeFoodOfDay(){
+    // Only foods with a real picture emoji (skip plain symbols like ♣ or ⚫)
+    const pool = ITEMS.filter(i=>(i.type==='fruit' || i.type==='vegetable') && i.emoji && i.emoji.codePointAt(0)>=0x1F300);
+    return pool[getDayOfYear(new Date()) % pool.length];
+  }
+  function homeGreeting(){
+    const h = new Date().getHours();
+    return h<12 ? 'Good morning' : h<17 ? 'Good afternoon' : 'Good evening';
+  }
+  function homeTile(t){
+    return '<button class="home-tile" type="button" data-home="'+t.go+'" style="--tile-c:'+t.c+'">'
+      + '<span class="ht-emoji" aria-hidden="true">'+t.emoji+'</span>'
+      + '<span class="ht-text"><b>'+t.label+'</b><small>'+t.sub+'</small></span></button>';
+  }
+  function renderHome(){
+    const food = homeFoodOfDay();
+    const today = WEEK_DAYS[(new Date().getDay()+6)%7];
+    const todays = MEAL_SLOTS.map(s=>({s, r:recipeById(mealPlan[today][s.key])})).filter(x=>x.r);
+    const planned = planCount();
+    const earned = BADGES.filter(b=>{ try{ return b.getCurrent()>=b.target; }catch(e){ return false; } }).length;
+    const sections = [
+      {title:'Play & learn', note:'For kids', tiles:[
+        {emoji:'🎯', label:'Fruit Shooter', sub:'Shoot the fruit, dodge the junk', go:'game:shooter', c:'#FFE4EC'},
+        {emoji:'🔎', label:'Explore foods', sub:ITEMS.length+' foods to discover', go:'explore', c:'#E8F0FF'},
+        {emoji:'🍓', label:'Food Crush', sub:'Match 3 and learn facts', go:'game:match3', c:'#FFF1DC'},
+        {emoji:'🧠', label:'More games', sub:'Memory, quiz, speed sort', go:'game:guess', c:'#EAF8EE'},
+      ]},
+      {title:'Plan & cook', note:'For parents', tiles:[
+        {emoji:'🗓️', label:'Meal Planner', sub:planned ? planned+' of 28 meals planned' : 'Plan the week in minutes', go:'planners:meal', c:'#EAF8EE'},
+        {emoji:'🍳', label:'Recipes', sub:RECIPES.length+' with nutrients', go:'discover:recipes', c:'#FFF1DC'},
+        {emoji:'🧒', label:'Kids’ Week', sub:'A ready-made week of meals', go:'discover:kids', c:'#E8F0FF'},
+        {emoji:'🛒', label:'Shopping list', sub:planned ? 'Built from your plan' : 'Fills in as you plan', go:'planners:meal:shop', c:'#F3ECFF'},
+      ]},
+      {title:'Help & track', note:'', tiles:[
+        {emoji:'🤖', label:'Ask Buddy', sub:'Quick food answers', go:'planners:buddy', c:'#F3ECFF'},
+        {emoji:'📏', label:'Growth', sub:'Track height and weight', go:'planners:growth', c:'#E8F0FF'},
+        {emoji:'🤒', label:'Sick day', sub:'Gentle foods that help', go:'planners:sick', c:'#FFE4EC'},
+        {emoji:'⭐', label:'My badges', sub:earned+' of '+BADGES.length+' earned', go:'collect', c:'#FFF1DC'},
+      ]},
+    ];
+    let html = '<div class="home-hello"><h1>'+homeGreeting()+'! 👋</h1><p>What would you like to do today?</p></div>'
+      + '<button class="home-fod" type="button" data-home="food:'+food.id+'">'
+        + '<span class="fod-emoji" aria-hidden="true">'+food.emoji+'</span>'
+        + '<span class="fod-text"><small>Food of the day</small><b>'+food.name+'</b><span>'+food.fact+'</span></span>'
+        + '<span class="fod-go" aria-hidden="true">→</span></button>';
+    if(todays.length){
+      html += '<button class="home-today" type="button" data-home="planners:meal"><small>📅 Today’s menu · '+today+'</small><span>'
+        + todays.map(x=>'<span class="ht-meal">'+x.s.icon+' '+x.r.emoji+' '+x.r.name+'</span>').join('')+'</span></button>';
+    }
+    html += sections.map(sec=>'<section class="home-sec"><h2>'+sec.title+(sec.note?' <span>'+sec.note+'</span>':'')+'</h2>'
+      + '<div class="home-grid">'+sec.tiles.map(homeTile).join('')+'</div></section>').join('');
+    const el = document.getElementById('homeTab');
+    el.innerHTML = html;
+    if(!reducedMotion()){
+      el.querySelectorAll('.home-fod, .home-today, .home-sec h2, .home-tile').forEach((n,i)=>{ n.style.setProperty('--d', (i*45)+'ms'); n.classList.add('rise'); });
+    }
+  }
+  function homeGo(go){
+    const p = go.split(':');
+    if(p[0]==='food'){ goToFood(p[1]); return; }
+    setMainTab(p[0]);
+    if(p[0]==='game' && p[1]) setPlayGame(p[1]);
+    if(p[0]==='planners' && p[1]) setPlannersSub(p[1]);
+    if(p[0]==='discover' && p[1]) setDiscoverSub(p[1]);
+    if(p[2]==='shop') setTimeout(()=>{ const s=document.getElementById('mpShop'); if(s) try{ s.scrollIntoView({behavior:reducedMotion()?'auto':'smooth', block:'start'}); }catch(e){} }, 120);
+  }
+  document.getElementById('homeTab').addEventListener('click', e=>{
+    const b = e.target.closest ? e.target.closest('[data-home]') : null;
+    if(b) homeGo(b.getAttribute('data-home'));
+  });
+
   /* ================= Top bar, page routing, Daily Needs toggle ================= */
-  const TAB_IDS = ['explore','game','discover','planners','collect'];
-  const TAB_HASH = {explore:'explore', game:'play', discover:'discover', planners:'planners', collect:'collect'};
-  const HASH_TAB = {explore:'explore', play:'game', game:'game', discover:'discover', planners:'planners', collect:'collect'};
+  const TAB_IDS = ['home','explore','game','discover','planners','collect'];
+  const TAB_HASH = {home:'home', explore:'explore', game:'play', discover:'discover', planners:'planners', collect:'collect'};
+  const HASH_TAB = {home:'home', explore:'explore', play:'game', game:'game', discover:'discover', planners:'planners', collect:'collect'};
   function setHash(h){
     // pushState updates the address without firing hashchange, so the app doesn't re-route (and close an open pop-up)
     // after it has already switched tabs itself. Back/forward still fire hashchange and route as before.
@@ -5753,9 +5886,12 @@
     }catch(e){ try{ window.location.hash = h; }catch(err){} }
   }
   function showPageEnter(tab){
-    const idMap = {explore:'exploreTab', game:'gameTab', discover:'discoverTab', planners:'plannersTab', collect:'collectTab'};
+    const idMap = {home:'homeTab', explore:'exploreTab', game:'gameTab', discover:'discoverTab', planners:'plannersTab', collect:'collectTab'};
     const el = document.getElementById(idMap[tab]);
-    if(el && !reducedMotion()){ el.classList.remove('page-enter'); void el.offsetWidth; el.classList.add('page-enter'); }
+    // Slide in from the side you're moving toward (right for tabs further along the bar, left for earlier ones)
+    const dir = TAB_ORDER.indexOf(tab) >= TAB_ORDER.indexOf(lastTabForAnim) ? 'page-enter' : 'page-enter-back';
+    if(el && !reducedMotion() && tab!==lastTabForAnim){ el.classList.remove('page-enter','page-enter-back'); void el.offsetWidth; el.classList.add(dir); }
+    lastTabForAnim = tab;
     try{ window.scrollTo(0,0); }catch(e){}
   }
   function showHome(){
@@ -5786,7 +5922,7 @@
     if(tab==='planners' && parts[1]) setPlannersSub(parts[1]);
     if(tab==='discover' && parts[1]) setDiscoverSub(parts[1]);
   }
-  document.getElementById('topbarHome').addEventListener('click', showHome);
+  document.getElementById('topbarHome').addEventListener('click', ()=>{ enterApp(false, true); setMainTab('home'); });
   window.addEventListener('hashchange', routeFromHash);
 
   const rdaAside = document.getElementById('rdaSidebar');
@@ -5857,7 +5993,8 @@
     document.getElementById('mainAppWrap').hidden = false;
     document.getElementById('topbar').hidden = false;
     syncTopbarH();
-    if(!jumpToBuddy && !skipTab) setMainTab('explore');
+    if(!jumpToBuddy && !skipTab) setMainTab('home');
+    try{ localStorage.setItem('happynutri-seen','1'); }catch(e){}
     if(jumpToBuddy){
       setMainTab('planners');
       setPlannersSub('buddy');
@@ -5869,6 +6006,9 @@
   // Deep link support: opening this file with #buddy skips the landing screen and jumps straight in
   if(window.location.hash && window.location.hash !== '#'){
     routeFromHash();
+  } else {
+    let seen = false; try{ seen = localStorage.getItem('happynutri-seen')==='1'; }catch(e){}
+    if(seen){ enterApp(false); try{ history.replaceState(null,'','#/home'); }catch(e){} }
   }
 
   // PWA: register the offline service worker if this page is hosted (not opened as a local file)
