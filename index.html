@@ -217,6 +217,16 @@
     #landingScreen{padding:28px 14px 50px;}
     .landing-cta-row{flex-direction:column;align-items:stretch;}
     .landing-btn{width:100%;}
+    /* Mobile: lift both CTA buttons (and the Buddy note) to just under the intro */
+    .landing-wrap{display:flex;flex-direction:column;}
+    .landing-wrap > *{order:2;}
+    .landing-wrap > .landing-brand,.landing-wrap > .landing-slogan,.landing-wrap > .landing-h1,.landing-wrap > .landing-sub{order:0;}
+    .landing-wrap > .landing-cta-row,.landing-wrap > .landing-path-note{order:1;}
+    .landing-sub{margin-bottom:20px;}
+    .landing-cta-row{margin:0 0 10px;gap:10px;flex-direction:row;flex-wrap:nowrap;}
+    .landing-cta-row .landing-btn{flex:1 1 0;min-width:0;width:auto;box-sizing:border-box;justify-content:center;padding:14px 10px;white-space:nowrap;}
+    .landing-cta-row .landing-btn-primary{border:2px solid transparent;}
+    .landing-path-note{margin-bottom:32px;}
     body{font-size:16px;}
     .wrap{padding-bottom:calc(60px + env(safe-area-inset-bottom));}
   }
