@@ -493,6 +493,95 @@
     .fod-emoji,.rise,.page-enter,.page-enter-back{animation:none !important;}
     .home-tile,.ht-emoji,.topbar .maintab::before,.topbar .maintab .mt-e{transition:none !important;}
   }
+  /* ---------- Food Dex: game layer on Explore ---------- */
+  .discovery-line{margin:0 0 12px;}
+  .dex-card{background:#fff;border:2px solid var(--line);border-radius:20px;padding:12px 14px;box-shadow:var(--shadow);}
+  .dex-top{display:flex;align-items:center;gap:10px;}
+  .dex-lvl{font-size:28px;width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,#F3ECFF,#E8F6FF);display:flex;align-items:center;justify-content:center;flex:none;}
+  .dex-lvl-text{display:flex;flex-direction:column;line-height:1.15;min-width:0;}
+  .dex-lvl-text small{font-size:10.5px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;}
+  .dex-lvl-text b{font-family:'Fredoka',sans-serif;font-size:16px;white-space:nowrap;}
+  .dex-xp{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px;}
+  .dex-xp-track{height:10px;border-radius:999px;background:var(--line);overflow:hidden;}
+  .dex-xp-fill{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--coral),var(--pink));transition:width .6s cubic-bezier(.22,1,.36,1);}
+  .dex-xp small{font-size:11px;font-weight:700;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .dex-count{font-size:12.5px;font-weight:700;color:var(--muted);margin:10px 0 0;display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center;}
+  .dex-count b{color:var(--ink);}
+  .dex-types{display:flex;gap:8px;flex-wrap:wrap;font-weight:600;}
+  .dex-mission{margin-top:10px;background:#FFF7E6;border:1.5px solid #FFE1A8;border-radius:14px;padding:10px 12px;}
+  .dex-mission.done{background:#F1FAF0;border-color:rgba(43,140,39,.3);}
+  .dm-head{display:flex;justify-content:space-between;align-items:center;font-family:'Fredoka',sans-serif;font-weight:700;font-size:13.5px;}
+  .dm-dots{display:flex;gap:5px;}
+  .dm-dots i{width:12px;height:12px;border-radius:50%;background:#FFE1A8;display:block;transition:background .3s ease,transform .3s cubic-bezier(.34,1.56,.64,1);}
+  .dm-dots i.on{background:var(--lime);transform:scale(1.15);}
+  .dex-mission p{margin:4px 0 0;font-size:12.5px;color:var(--muted);line-height:1.45;}
+  .dex-mission p b{color:var(--ink);}
+  .dm-hints{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:8px;}
+  .dm-hints small{font-size:11.5px;font-weight:700;color:var(--muted);}
+  .dm-hint{font:inherit;font-size:12px;font-weight:700;background:#fff;border:1.5px solid #FFE1A8;border-radius:999px;padding:5px 10px;cursor:pointer;color:var(--ink);min-height:32px;}
+  .fruitBadge{transition:transform .18s ease,box-shadow .18s ease,filter .3s ease;}
+  .fruitBadge.undiscovered .emoji-badge{filter:grayscale(1);opacity:.45;}
+  .fruitBadge.undiscovered .fname{color:var(--muted);}
+  .fruitBadge.reveal .emoji-badge{animation:dexReveal .7s cubic-bezier(.34,1.56,.64,1);}
+  @keyframes dexReveal{0%{transform:scale(.4) rotate(-20deg);filter:grayscale(1);}60%{transform:scale(1.3) rotate(8deg);}100%{transform:none;filter:none;}}
+  .food-hero{display:flex;align-items:center;gap:14px;padding:16px;border-radius:22px;margin:4px 0 12px;
+    background:radial-gradient(circle at 18% 50%, color-mix(in srgb, var(--fc) 35%, #fff) 0%, #fff 70%);border:2px solid color-mix(in srgb, var(--fc) 45%, #fff);}
+  .fh-emoji{font-size:64px;line-height:1;flex:none;animation:fodFloat 3.2s ease-in-out infinite;}
+  .fh-text{flex:1;min-width:0;}
+  .fh-text small{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);}
+  .food-hero .detail-name{margin:2px 0 4px;}
+  .fh-dex{font-size:12px;font-weight:700;color:var(--muted);}
+  .fh-new{display:inline-block;color:#fff;background:linear-gradient(90deg,var(--coral),var(--pink));padding:3px 10px;border-radius:999px;font-size:12px;animation:dexStamp .6s cubic-bezier(.34,1.56,.64,1);}
+  @keyframes dexStamp{0%{transform:scale(2.2) rotate(-12deg);opacity:0;}100%{transform:none;opacity:1;}}
+  .tn-title span{font-family:inherit;font-weight:600;font-size:11.5px;color:var(--muted);margin-left:4px;}
+  .power-stats{margin:14px 0 4px;}
+  .ps-row{display:grid;grid-template-columns:118px 1fr auto;align-items:center;gap:10px;padding:5px 0;font-size:13px;font-weight:700;}
+  .ps-track{height:10px;border-radius:999px;background:var(--line);overflow:hidden;}
+  .ps-fill{display:block;height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,var(--sky),var(--lime));transition:width .7s cubic-bezier(.22,1,.36,1);transition-delay:var(--d,0ms);}
+  .ps-fill.go{width:var(--w);}
+  .ps-stars{color:#F5A524;letter-spacing:1px;font-size:13px;white-space:nowrap;}
+  .ps-stars span{color:var(--line);}
+  .superpowers{margin:14px 0 4px;}
+  .sp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+  .sp-card{display:flex;flex-direction:column;gap:3px;background:#F7F2FF;border-radius:16px;padding:12px 10px;min-width:0;}
+  .sp-e{font-size:26px;}
+  .sp-card b{font-family:'Fredoka',sans-serif;font-size:14px;line-height:1.15;}
+  .sp-card small{font-size:11.5px;color:var(--muted);line-height:1.35;}
+  .sp-pct{margin-top:auto;padding-top:4px;font-size:11px;font-weight:800;color:var(--purple);}
+  .battle-btn{display:block;width:100%;margin:14px 0 6px;font-family:'Fredoka',sans-serif;font-weight:700;font-size:15px;color:#fff;border:none;border-radius:16px;padding:13px;cursor:pointer;
+    background:linear-gradient(90deg,#E5484D,#C026D3);box-shadow:0 8px 20px -10px rgba(192,38,211,.6);transition:transform .15s ease;}
+  .battle-btn:active{transform:scale(.97);}
+  .battle{background:#FFF5F7;border:2px solid #FFD5DE;border-radius:18px;padding:14px;margin-bottom:8px;animation:homeRise .4s cubic-bezier(.22,1,.36,1);}
+  .bt-head{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;margin-bottom:10px;}
+  .bt-f{display:flex;flex-direction:column;align-items:center;font-size:36px;line-height:1.1;min-width:0;}
+  .bt-f b{font-family:'Fredoka',sans-serif;font-size:13px;margin-top:4px;text-align:center;}
+  button.bt-f{background:none;border:none;cursor:pointer;color:var(--ink);font:inherit;font-size:36px;}
+  .bt-vs{font-family:'Fredoka',sans-serif;font-weight:800;font-size:18px;color:#E5484D;animation:btPulse 1.2s ease-in-out infinite;}
+  @keyframes btPulse{50%{transform:scale(1.2);}}
+  .bt-row{display:grid;grid-template-columns:1fr 70px 1fr;align-items:center;gap:8px;margin:6px 0;}
+  .bt-bar{height:12px;border-radius:999px;background:#FFE4EA;overflow:hidden;display:flex;}
+  .bt-bar.a{justify-content:flex-end;}
+  .bt-bar i{display:block;height:100%;width:var(--w);border-radius:999px;background:#F2A7B8;animation:btGrow .6s cubic-bezier(.22,1,.36,1);}
+  .bt-bar.win i{background:linear-gradient(90deg,var(--lime),#8BD450);}
+  @keyframes btGrow{from{width:0;}}
+  .bt-stat{display:flex;flex-direction:column;align-items:center;font-size:18px;line-height:1;}
+  .bt-stat small{font-size:10px;font-weight:700;color:var(--muted);margin-top:2px;text-align:center;}
+  .bt-result{text-align:center;font-family:'Fredoka',sans-serif;font-weight:700;font-size:17px;margin:10px 0 8px;}
+  .bt-actions{display:flex;justify-content:center;}
+  .bt-note{font-size:11px;color:var(--muted);text-align:center;margin:8px 0 0;}
+  @media (max-width:640px){
+    .sp-grid{grid-template-columns:1fr;}
+    .sp-card{display:grid;grid-template-columns:40px 1fr;column-gap:10px;align-items:center;}
+    .sp-card .sp-e{grid-row:span 3;text-align:center;}
+    .sp-pct{padding-top:2px;}
+    .ps-row{grid-template-columns:112px 1fr auto;gap:8px;font-size:12.5px;}
+    .fh-emoji{font-size:56px;}
+    .dex-types{font-size:11.5px;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .fh-emoji,.fruitBadge.reveal .emoji-badge,.fh-new,.bt-vs,.bt-bar i,.battle{animation:none !important;}
+    .ps-fill,.dex-xp-fill{transition:none !important;}
+  }
   /* ---------- Nutrition wheel ---------- */
   .wheel-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap;background:linear-gradient(120deg,rgba(139,92,246,.08),rgba(43,140,39,.08)),#fff;border:2px solid var(--line);border-radius:var(--radius-md);padding:14px 16px;margin:0 0 16px;}
   .wheel-wrap{flex:0 0 124px;width:124px;}
@@ -1167,6 +1256,7 @@
     <button class="surprise-btn" id="surpriseBtn" type="button">🎲 Random food drop</button>
   </div>
 
+    <div class="discovery-line" id="discoveryLine"></div>
     <div class="controls">
       <div class="search-row">
         <input class="search-input" id="searchInput" type="text" placeholder="🔍 Search fruits, veg, nuts, grains..." aria-label="Search">
@@ -1186,7 +1276,6 @@
           </div>
         </div>
       </details>
-      <p class="discovery-line" id="discoveryLine"></p>
     </div>
 
     <div class="picker" id="picker" aria-label="Food picker"></div>
@@ -3135,6 +3224,215 @@
   const favItems = new Set();
   const viewedItems = new Set();
 
+  /* ================= Food Dex: XP, levels, daily missions, power stats, battles ================= */
+  const DEX_KEY = 'happynutri-dex-v1';
+  const dex = { missions:[], battles:0, today:{date:'', ids:[]}, justFound:null, revealId:null };
+  function dexToday(){ const d = new Date(); return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate(); }
+  (function loadDex(){
+    try{
+      const o = JSON.parse(localStorage.getItem(DEX_KEY)||'null');
+      if(!o) return;
+      (o.seen||[]).forEach(id=>{ if(itemById(id)) viewedItems.add(id); });
+      (o.fav||[]).forEach(id=>{ if(itemById(id)) favItems.add(id); });
+      if(Array.isArray(o.missions)) dex.missions = o.missions;
+      if(o.battles>0) dex.battles = o.battles;
+      if(o.today && o.today.date===dexToday()) dex.today = o.today;
+    }catch(e){}
+  })();
+  function saveDex(){
+    try{ localStorage.setItem(DEX_KEY, JSON.stringify({seen:[...viewedItems], fav:[...favItems], missions:dex.missions.slice(-60), battles:dex.battles, today:dex.today})); }catch(e){}
+  }
+  const DEX_LEVELS = [
+    {xp:0, emoji:'🌱', name:'Sprout'}, {xp:100, emoji:'🔎', name:'Snack Scout'}, {xp:250, emoji:'🧭', name:'Food Explorer'},
+    {xp:500, emoji:'🥷', name:'Nutrient Ninja'}, {xp:900, emoji:'🦸', name:'Superfood Hero'}, {xp:1400, emoji:'🧙', name:'Vitamin Wizard'},
+    {xp:2000, emoji:'👑', name:'Food Legend'},
+  ];
+  function dexXP(){ return viewedItems.size*10 + dex.missions.length*30 + Math.min(dex.battles, 50)*5; }
+  function dexLevel(xp){
+    let i = 0; DEX_LEVELS.forEach((l,k)=>{ if(xp>=l.xp) i = k; });
+    return {i, cur:DEX_LEVELS[i], next:DEX_LEVELS[i+1]||null};
+  }
+  function dexAward(fn){
+    const before = dexLevel(dexXP()).i;
+    fn();
+    saveDex();
+    const after = dexLevel(dexXP());
+    if(after.i > before){
+      setTimeout(()=>{ hnToast('🎉 Level up! '+after.cur.emoji+' '+after.cur.name); burstConfetti(document.getElementById('dexCard')); }, 450);
+    }
+  }
+
+  // Kid-friendly names for what each nutrient does
+  const SUPERPOWERS = {
+    vitC:{e:'🛡️', n:'Immune Shield', d:'helps your body fight off colds'},
+    vitA:{e:'👀', n:'Night Vision', d:'helps your eyes see in the dark'},
+    calcium:{e:'🦴', n:'Bone Builder', d:'makes bones and teeth strong'},
+    iron:{e:'🩸', n:'Power Blood', d:'carries oxygen so you don’t feel tired'},
+    potassium:{e:'❤️', n:'Heart Helper', d:'keeps your heartbeat steady'},
+    folate:{e:'🧬', n:'Cell Builder', d:'helps your body make new cells'},
+    magnesium:{e:'😌', n:'Muscle Calmer', d:'helps muscles and nerves work'},
+    vitK1:{e:'🩹', n:'Wound Healer', d:'helps cuts stop bleeding'},
+    vitE:{e:'✨', n:'Skin Shield', d:'protects your cells and skin'},
+    zinc:{e:'🦠', n:'Germ Fighter', d:'helps you heal and fight germs'},
+    vitB12:{e:'🧠', n:'Brain Fuel', d:'keeps your brain and nerves working'},
+    vitD3:{e:'☀️', n:'Sunshine Power', d:'helps bones soak up calcium'},
+    vitD2:{e:'☀️', n:'Sunshine Power', d:'helps bones soak up calcium'},
+    vitB6:{e:'😊', n:'Mood Helper', d:'helps your brain send happy messages'},
+    phosphorus:{e:'🦷', n:'Tooth Armor', d:'builds strong teeth and bones'},
+    selenium:{e:'🛡️', n:'Cell Guard', d:'protects your cells from damage'},
+    vitB1:{e:'⚡', n:'Energy Spark', d:'turns food into energy'},
+    vitB2:{e:'⚡', n:'Energy Booster', d:'helps your body use energy'},
+    vitB3:{e:'🔋', n:'Power Charger', d:'helps turn food into fuel'},
+    vitB5:{e:'🔋', n:'Energy Maker', d:'helps make energy from food'},
+    vitB7:{e:'💇', n:'Hair & Nail Helper', d:'helps hair, skin and nails'},
+    omega3:{e:'🧠', n:'Brain Booster', d:'helps build brain and eye cells'},
+    fiber:{e:'🌾', n:'Tummy Helper', d:'keeps your tummy happy and you full'},
+    protein:{e:'💪', n:'Muscle Builder', d:'builds and repairs muscles'},
+  };
+  const DEX_DV = Object.assign({fiber:28, protein:50}, Object.fromEntries(MICROS.map(m=>[m.key, m.dv])));
+  function dvPct(f, key){ return DEX_DV[key] ? (f.per100[key]||0)/DEX_DV[key]*100 : 0; }
+  function topSuperpowers(f, n){
+    return Object.keys(SUPERPOWERS).filter(k=>k!=='vitD2' || !(f.per100.vitD3>0))
+      .map(k=>({k, p:dvPct(f,k)})).filter(x=>x.p>=5).sort((a,b)=>b.p-a.p).slice(0, n||3);
+  }
+  const VIT_KEYS = ['vitC','vitA','folate','vitK1','vitE','vitB6','vitB12','vitB1','vitB2','vitB3','vitB5','vitD3','vitD2'];
+  const MIN_KEYS = ['calcium','iron','magnesium','potassium','zinc','phosphorus','selenium'];
+  const POWER_STATS = [
+    {k:'energy',   e:'⚡', n:'Energy',        v:f=>f.per100.cal},
+    {k:'muscle',   e:'💪', n:'Muscle power',  v:f=>f.per100.protein},
+    {k:'tummy',    e:'🌾', n:'Tummy power',   v:f=>f.per100.fiber},
+    {k:'water',    e:'💧', n:'Hydration',     v:f=>f.per100.water},
+    {k:'vitamins', e:'🛡️', n:'Vitamin power', v:f=>VIT_KEYS.reduce((a,k)=>a+Math.min(100, dvPct(f,k)),0)},
+    {k:'minerals', e:'🦴', n:'Mineral power', v:f=>MIN_KEYS.reduce((a,k)=>a+Math.min(100, dvPct(f,k)),0)},
+  ];
+  const TYPE_WORD = {fruit:'fruits', vegetable:'veggies', pantry:'pantry foods', protein:'protein foods', spice:'spices'};
+  const statRankCache = {};
+  // 0–1: where this food ranks against other foods of the same type
+  function statRank(f, stat){
+    const key = f.type+'|'+stat.k;
+    if(!statRankCache[key]) statRankCache[key] = ITEMS.filter(i=>i.type===f.type).map(stat.v).sort((a,b)=>a-b);
+    const arr = statRankCache[key], v = stat.v(f);
+    let below = 0; arr.forEach(x=>{ if(x<v) below++; });
+    let same = 0; arr.forEach(x=>{ if(x===v) same++; });
+    return arr.length>1 ? (below + same/2)/(arr.length) : 0.5;
+  }
+  function stars(r){ const n = Math.max(1, Math.min(5, Math.ceil(r*5))); return '<span class="ps-stars" aria-label="'+n+' of 5 stars">'+'★'.repeat(n)+'<span>'+'★'.repeat(5-n)+'</span></span>'; }
+
+  const MISSION_KEYS = ['vitC','vitA','calcium','iron','fiber','protein','potassium','folate','vitK1','magnesium'];
+  function dexMission(){
+    const k = MISSION_KEYS[getDayOfYear(new Date()) % MISSION_KEYS.length];
+    const qual = f=>dvPct(f,k)>=20;
+    const done = dex.today.ids.filter(id=>{ const f=itemById(id); return f && qual(f); });
+    return {k, sp:SUPERPOWERS[k], need:3, got:Math.min(3, done.length), qual, complete:dex.missions.includes(dex.today.date||dexToday())};
+  }
+  // Colour the tile in with a little pop when a food joins the Food Dex
+  function dexRevealTile(id){
+    const t = document.querySelector('.fruitBadge[data-id="'+id+'"]');
+    if(!t) return;
+    t.classList.remove('undiscovered','reveal'); void t.offsetWidth; t.classList.add('reveal');
+    t.removeAttribute('title');
+  }
+  function dexOnView(f){
+    const today = dexToday();
+    if(dex.today.date!==today) dex.today = {date:today, ids:[]};
+    const isNew = !viewedItems.has(f.id);
+    dexAward(()=>{
+      if(isNew){ viewedItems.add(f.id); dex.justFound = f.id; dex.revealId = f.id; dexRevealTile(f.id); }
+      if(!dex.today.ids.includes(f.id)) dex.today.ids.push(f.id);
+      const m = dexMission();
+      if(m.got>=m.need && !dex.missions.includes(today)){
+        dex.missions.push(today);
+        setTimeout(()=>{ hnToast('🎯 Mission complete! +30 XP'); burstConfetti(document.getElementById('dexCard')); }, 250);
+      }
+    });
+    if(!isNew && dex.justFound===f.id){ /* keep the stamp while this food stays open */ }
+    else if(!isNew) dex.justFound = null;
+  }
+
+  function renderDexCard(){
+    const el = document.getElementById('discoveryLine');
+    if(!el) return;
+    const xp = dexXP(), L = dexLevel(xp);
+    const pct = L.next ? (xp - L.cur.xp)/(L.next.xp - L.cur.xp)*100 : 100;
+    const m = dexMission();
+    const types = [['fruit','🍎'],['vegetable','🥦'],['pantry','🌾'],['protein','🍗'],['spice','🧂']];
+    const hints = ITEMS.filter(f=>m.qual(f) && !dex.today.ids.includes(f.id) && (f.type==='fruit'||f.type==='vegetable'||f.type==='protein'))
+      .sort((a,b)=>(viewedItems.has(a.id)-viewedItems.has(b.id)) || (dvPct(b,m.k)-dvPct(a,m.k))).slice(0,3);
+    el.innerHTML = '<div class="dex-card" id="dexCard">'
+      + '<div class="dex-top"><span class="dex-lvl" title="Level '+(L.i+1)+'">'+L.cur.emoji+'</span>'
+        + '<div class="dex-lvl-text"><small>Level '+(L.i+1)+'</small><b>'+L.cur.name+'</b></div>'
+        + '<div class="dex-xp"><span class="dex-xp-track"><span class="dex-xp-fill" style="width:'+pct.toFixed(0)+'%"></span></span>'
+        + '<small>'+xp+' XP'+(L.next?' · '+(L.next.xp-xp)+' to '+L.next.emoji+' '+L.next.name:' · max level!')+'</small></div></div>'
+      + '<div class="dex-count">📘 <b>Food Dex</b> '+viewedItems.size+' / '+ITEMS.length+' found'
+        + '<span class="dex-types">'+types.map(([t,e])=>{ const all = ITEMS.filter(i=>i.type===t); return '<span>'+e+' '+all.filter(i=>viewedItems.has(i.id)).length+'/'+all.length+'</span>'; }).join('')+'</span></div>'
+      + '<div class="dex-mission'+(m.complete?' done':'')+'"><div class="dm-head"><span>🎯 Today’s mission</span><span class="dm-dots">'
+        + [0,1,2].map(i=>'<i class="'+(i<m.got?'on':'')+'"></i>').join('')+'</span></div>'
+        + '<p>'+(m.complete ? '✅ Done! You found 3 foods with '+m.sp.e+' <b>'+m.sp.n+'</b>. Come back tomorrow for a new one.'
+              : 'Open 3 foods with '+m.sp.e+' <b>'+m.sp.n+'</b> (lots of '+(nutMeta(m.k).label)+') · <b>+30 XP</b>')+'</p>'
+        + (m.complete || !hints.length ? '' : '<div class="dm-hints"><small>Try:</small>'+hints.map(f=>'<button type="button" class="dm-hint" data-dex-open="'+f.id+'">'+f.emoji+' '+f.name+'</button>').join('')+'</div>')
+      + '</div></div>';
+  }
+  document.addEventListener('click', e=>{
+    const b = e.target.closest ? e.target.closest('[data-dex-open]') : null;
+    if(b) onPick(b.getAttribute('data-dex-open'));
+  });
+
+  function buildFoodHero(f){
+    const cat = CATS[f.category] || {label:f.category, color:'var(--line)'};
+    const found = dex.justFound===f.id;
+    return '<div class="food-hero" style="--fc:'+cat.color+'">'
+      + '<span class="fh-emoji">'+f.emoji+'</span>'
+      + '<div class="fh-text"><small>'+(f.type==='vegetable'?'Veggie':f.type.charAt(0).toUpperCase()+f.type.slice(1))+' · '+cat.label+'</small>'
+      + '<p class="detail-name">'+f.name+'<button class="fav-btn" id="favBtn" type="button" aria-pressed="'+favItems.has(f.id)+'">'+(favItems.has(f.id)?'❤️':'🤍')+'</button></p>'
+      + '<span class="fh-dex">'+(found ? '<b class="fh-new">✨ NEW! +10 XP</b>' : '📘 In your Food Dex')+'</span></div></div>';
+  }
+  function buildPowerStats(f){
+    return '<div class="power-stats"><p class="tn-title">🎮 Power stats <span>vs other '+TYPE_WORD[f.type]+'</span></p>'
+      + POWER_STATS.map((s,i)=>{ const r = statRank(f,s);
+          return '<div class="ps-row"><span class="ps-name">'+s.e+' '+s.n+'</span><span class="ps-track"><span class="ps-fill" style="--w:'+Math.max(6,r*100).toFixed(0)+'%;--d:'+(i*70)+'ms"></span></span>'+stars(r)+'</div>'; }).join('')
+      + '</div>';
+  }
+  function buildSuperpowers(f){
+    const top = topSuperpowers(f, 3);
+    if(!top.length) return '';
+    return '<div class="superpowers"><p class="tn-title">🦸 Superpowers <span>in 100 g</span></p><div class="sp-grid">'
+      + top.map(x=>{ const sp = SUPERPOWERS[x.k];
+          return '<div class="sp-card"><span class="sp-e">'+sp.e+'</span><b>'+sp.n+'</b><small>'+sp.d+'</small>'
+            + '<span class="sp-pct">'+Math.round(x.p)+'% of a day’s '+nutMeta(x.k).label.replace(/ \(.*\)$/,'')+'</span></div>'; }).join('')
+      + '</div></div>';
+  }
+
+  /* ---------- Food Battle ---------- */
+  const BATTLE_STATS = POWER_STATS.filter(s=>s.k!=='energy');
+  function renderBattle(f, foeId){
+    const box = document.getElementById('battleBox');
+    if(!box) return;
+    let foe = itemById(foeId);
+    if(!foe){
+      const pool = ITEMS.filter(i=>i.type===f.type && i.id!==f.id);
+      foe = pool[Math.floor(Math.random()*pool.length)];
+    }
+    let mine = 0, theirs = 0;
+    const rows = BATTLE_STATS.map(s=>{
+      const a = s.v(f), b = s.v(foe), max = Math.max(a,b) || 1;
+      const win = a>b ? 'a' : b>a ? 'b' : '';
+      if(win==='a') mine++; else if(win==='b') theirs++;
+      return '<div class="bt-row"><span class="bt-bar a'+(win==='a'?' win':'')+'"><i style="--w:'+(a/max*100).toFixed(0)+'%"></i></span>'
+        + '<span class="bt-stat">'+s.e+'<small>'+s.n.replace(' power','')+'</small></span>'
+        + '<span class="bt-bar b'+(win==='b'?' win':'')+'"><i style="--w:'+(b/max*100).toFixed(0)+'%"></i></span></div>';
+    }).join('');
+    const result = mine>theirs ? '🏆 '+f.name+' wins '+mine+'–'+theirs+'!' : theirs>mine ? '🏆 '+foe.name+' wins '+theirs+'–'+mine+'!' : '🤝 It’s a draw, '+mine+'–'+theirs+'!';
+    box.innerHTML = '<div class="battle">'
+      + '<div class="bt-head"><span class="bt-f">'+f.emoji+'<b>'+f.name+'</b></span><span class="bt-vs">VS</span><button type="button" class="bt-f foe" data-dex-open="'+foe.id+'">'+foe.emoji+'<b>'+foe.name+'</b></button></div>'
+      + rows
+      + '<p class="bt-result">'+result+'</p>'
+      + '<div class="bt-actions"><button type="button" class="shuffle-btn" data-battle="again">⚔️ New opponent</button></div>'
+      + '<p class="bt-note">Each bar compares the two foods per 100 g. Tap the opponent to open it.</p></div>';
+    dexAward(()=>{ dex.battles++; });
+    renderDexCard();
+  }
+
+
   let recipeCuisine = 'all';
   let recipeDiet = 'all';
   let recipeDiff = 'all';
@@ -3408,7 +3706,8 @@
     pickerEl.innerHTML = list.map(f=>{
       const isSel = selected.includes(f.id);
       const idx = selected.indexOf(f.id);
-      return '<button class="fruitBadge '+(isSel?'selected':'')+'" data-id="'+f.id+'" aria-pressed="'+isSel+'">'
+      const seen = viewedItems.has(f.id);
+      return '<button class="fruitBadge '+(isSel?'selected':'')+(seen?'':' undiscovered')+'" data-id="'+f.id+'" aria-pressed="'+isSel+'"'+(seen?'':' title="Not in your Food Dex yet"')+'>'
         + '<span class="check">'+(compareMode && idx>-1 ? (idx+1) : '✓')+'</span>'
         + '<span class="emoji-badge" style="--fc:'+CATS[f.category].color+'59">'+f.emoji+'</span>'
         + '<span class="fname">'+f.name+'</span>'
@@ -3436,7 +3735,7 @@
   }
 
   function renderDiscoveryLine(){
-    discoveryLine.innerHTML = '🌟 You\u2019ve explored <b>'+viewedItems.size+'</b> of '+ITEMS.length+' items';
+    renderDexCard();
   }
 
   /* Nutrition wheel: where a food's calories come from (carbs/protein/fat, 4-4-9 kcal per gram) */
@@ -3485,11 +3784,12 @@
 
   function renderDetail(){
     const fruit = itemById(selected[0]) || ITEMS[0];
-    viewedItems.add(fruit.id);
+    dexOnView(fruit);
     renderDiscoveryLine();
     const bloomHtml = buildBloom(fruit);
     const legend = MACROS.map(m=>'<div class="legend-item"><span class="legend-dot" style="background:'+m.color+'"></span>'+m.label+' — '+fruit.per100[m.key]+m.unit+'</div>').join('');
-    const pods = MICROS.map(m=>buildRing(fruit,m)).join('');
+    const pods = MICROS.filter(m=>fruit.per100[m.key]>0).map(m=>buildRing(fruit,m)).join('');
+    const zeroNuts = MICROS.filter(m=>!(fruit.per100[m.key]>0)).map(m=>m.label);
     const isFav = favItems.has(fruit.id);
     const seasonLabel = fruit.season.map(s=>{
       const found = SEASONS.find(x=>x[0]===s);
@@ -3498,17 +3798,15 @@
 
     detailPanel.innerHTML =
       '<div class="sheet-bar"><button class="sheet-nav" type="button" data-sheet="prev" aria-label="Previous food">\u2039</button><button class="sheet-nav" type="button" data-sheet="next" aria-label="Next food">\u203a</button><button class="sheet-needs" type="button" data-sheet="needs">\ud83d\udcca Daily needs</button><button class="sheet-close" type="button" data-sheet="close" aria-label="Close">\u2715</button></div>'
-      + buildWheel(fruit)
-      + '<div class="detail-head">'
-      + '<div class="detail-id">'
-      + '<span class="detail-emoji-big">'+fruit.emoji+'</span>'
-      + '<p class="detail-name">'+fruit.name+'<button class="fav-btn" id="favBtn" type="button" aria-pressed="'+isFav+'">'+(isFav?'❤️':'🤍')+'</button></p>'
-      + '</div>'
-      + '</div>'
-      + buildTopNutrients(fruit)
-      + '<div class="fact-strip">🌱 <span>'+fruit.fact+'</span></div>'
+      + buildFoodHero(fruit)
+      + '<div class="fact-strip">💡 <span>'+fruit.fact+'</span></div>'
+      + buildPowerStats(fruit)
+      + buildSuperpowers(fruit)
+      + '<button class="battle-btn" type="button" data-battle="start">⚔️ Battle another '+(TYPE_WORD[fruit.type]||'food').replace(/s$/,'').replace('veggie','veggie')+'</button>'
+      + '<div id="battleBox"></div>'
       + cookWithHtml(fruit)
-      + '<details class="more-detail"><summary>More details</summary>'
+      + '<details class="more-detail"><summary>All the nutrients (for grown-ups)</summary>'
+      + buildWheel(fruit)
       + '<p class="detail-serving">Typical serving: '+fruit.serving+'</p>'
       + '<div class="bloom-row">'
       + '<div class="photo-wrap loading" id="photoWrap"><img id="photoImg" alt="'+fruit.name+'"><span class="photo-fallback">'+fruit.emoji+'</span><span class="photo-credit">via Wikipedia</span></div>'
@@ -3516,18 +3814,21 @@
       + '<div class="bloom-legend">'+legend+'<p class="legend-note">Petal length shows how this item ranks against everything else in the list for that nutrient — not the raw gram amount. Exact grams are labeled on each petal.</p></div>'
       + '</div>'
       + '<div class="pods-grid">'+pods+'</div>'
+      + (zeroNuts.length ? '<p class="legend-note">None in this food: '+zeroNuts.join(', ')+'.</p>' : '')
       + '<div class="prep-tag">🍽️ <b>How to eat it:</b> '+fruit.prep+'</div>'
       + '<div><span class="season-tag">📅 In season: '+seasonLabel+'</span></div>'
       + '</details>';
 
     animatePetals(detailPanel);
     animateRings(detailPanel);
+    requestAnimationFrame(()=>requestAnimationFrame(()=>detailPanel.querySelectorAll('.ps-fill').forEach(x=>x.classList.add('go'))));
     animateNumber(document.getElementById('calNum'), fruit.per100.cal);
     loadItemPhoto(fruit);
     renderRdaSidebar();
 
     document.getElementById('favBtn').addEventListener('click', ()=>{
       if(favItems.has(fruit.id)) favItems.delete(fruit.id); else favItems.add(fruit.id);
+      saveDex();
       renderDetail();
     });
   }
@@ -5954,6 +6255,8 @@
     detailPanel.scrollTop = 0;
   }
   function closeSheet(){
+    if(dex.revealId && detailPanel.classList.contains('sheet-open')){ const id = dex.revealId; setTimeout(()=>dexRevealTile(id), 180); }
+    dex.revealId = null;
     detailPanel.classList.remove('sheet-open');
     sheetBackdrop.classList.remove('show');
     document.documentElement.classList.remove('no-scroll');
@@ -5965,6 +6268,10 @@
     const nxt = idx<0 ? list[0] : list[(idx+dir+list.length)%list.length];
     onPick(nxt.id);
   }
+  detailPanel.addEventListener('click', e=>{
+    const bt = e.target.closest ? e.target.closest('[data-battle]') : null;
+    if(bt){ renderBattle(itemById(selected[0]) || ITEMS[0]); const box=document.getElementById('battleBox'); if(box) try{ box.scrollIntoView({behavior:reducedMotion()?'auto':'smooth', block:'nearest'}); }catch(err){} return; }
+  });
   detailPanel.addEventListener('click', e=>{
     const t = e.target.closest ? e.target.closest('[data-sheet]') : null;
     if(!t) return;
