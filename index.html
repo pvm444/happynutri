@@ -582,6 +582,76 @@
     .fh-emoji,.fruitBadge.reveal .emoji-badge,.fh-new,.bt-vs,.bt-bar i,.battle{animation:none !important;}
     .ps-fill,.dex-xp-fill{transition:none !important;}
   }
+  /* ---------- Today for my kids ---------- */
+  .tk-kids{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;}
+  .tk-kid-chip{font-family:'Fredoka',sans-serif;font-weight:700;font-size:14px;background:#fff;border:2px solid var(--line);border-radius:999px;padding:8px 14px;cursor:pointer;color:var(--ink);min-height:44px;}
+  .tk-kid-chip small{color:var(--muted);font-weight:600;margin-left:2px;}
+  .tk-kid-chip.add{border-style:dashed;color:var(--coral);}
+  .tk-form{background:#F7F2FF;border-radius:18px;padding:14px;margin-bottom:14px;display:grid;grid-template-columns:2fr 1fr;gap:10px;}
+  .tk-form-title{grid-column:1/-1;margin:0;font-weight:700;font-size:14px;}
+  .tk-form label{display:flex;flex-direction:column;gap:4px;font-size:12px;font-weight:700;color:var(--muted);min-width:0;}
+  .tk-form .search-input{font-size:16px;width:100%;}
+  .tk-sex{grid-column:1/-1;display:flex;gap:10px;}
+  .tk-sex label{flex-direction:row;align-items:center;gap:6px;background:#fff;border:2px solid var(--line);border-radius:12px;padding:8px 12px;font-size:14px;color:var(--ink);cursor:pointer;}
+  .tk-form-actions{grid-column:1/-1;display:flex;gap:8px;flex-wrap:wrap;}
+  .warn-text{color:var(--bad) !important;}
+  .tk-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));gap:12px;}
+  .tk-card{background:#fff;border:2px solid var(--line);border-radius:20px;padding:14px;min-width:0;}
+  .tk-card-head{display:flex;align-items:center;gap:10px;}
+  .tk-av{font-size:30px;width:46px;height:46px;border-radius:14px;background:#F3ECFF;display:flex;align-items:center;justify-content:center;flex:none;}
+  .tk-card-head > div{flex:1;min-width:0;display:flex;flex-direction:column;}
+  .tk-card-head b{font-family:'Fredoka',sans-serif;font-size:17px;}
+  .tk-card-head small{font-size:12px;color:var(--muted);font-weight:600;}
+  .tk-score{display:flex;flex-direction:column;align-items:center;font-family:'Fredoka',sans-serif;font-size:13px;color:var(--muted);line-height:1;}
+  .tk-score b{font-size:24px;color:var(--lime);}
+  .tk-score small{font-size:10px;margin-top:2px;}
+  .tk-head{font-size:13.5px;margin:10px 0 8px;color:var(--muted);}
+  .tk-score small{text-align:center;line-height:1.2;}
+  .tk-bars{display:grid;gap:5px;padding-top:6px;}
+  .tk-lows{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;}
+  .tk-lows span{font-size:11.5px;font-weight:800;color:var(--bad);background:#FFECEE;border-radius:999px;padding:3px 9px;}
+  .tk-more summary{cursor:pointer;font-size:12.5px;font-weight:700;color:var(--purple);padding:4px 0;}
+  .tk-bar{display:grid;grid-template-columns:88px 1fr 40px;align-items:center;gap:8px;font-size:12px;font-weight:700;}
+  .tk-bt{height:8px;border-radius:999px;background:var(--line);overflow:hidden;}
+  .tk-bt i{display:block;height:100%;border-radius:999px;}
+  .tk-bar.ok i{background:var(--lime);} .tk-bar.mid i{background:#F5A524;} .tk-bar.low i{background:var(--bad);}
+  .tk-bv{text-align:right;color:var(--muted);}
+  .tk-bar.ok .tk-bv{color:var(--lime);} .tk-bar.low .tk-bv{color:var(--bad);}
+  .tk-cook,.tk-tops,.tk-log{margin-top:18px;}
+  .tk-cook h3,.tk-tops h3,.tk-log h3{font-family:'Fredoka',sans-serif;font-size:18px;margin:0 0 4px;}
+  .tk-log h3 small{font-family:inherit;font-size:12px;color:var(--muted);font-weight:600;}
+  .tk-sub{margin:0 0 12px;font-size:13px;color:var(--muted);}
+  .tk-rec{position:relative;display:flex;align-items:center;gap:12px;background:#fff;border:2px solid var(--line);border-radius:18px;padding:12px;margin-bottom:10px;}
+  .tk-rec.best{border-color:rgba(43,140,39,.5);background:#F6FCF5;}
+  .tk-best{position:absolute;top:-10px;left:14px;background:var(--lime);color:#fff;font-size:10.5px;font-weight:800;padding:2px 9px;border-radius:999px;letter-spacing:.03em;}
+  .tk-rec-e{font-size:34px;flex:none;}
+  .tk-rec-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px;}
+  .tk-rec-main .recipe-link{font-family:'Fredoka',sans-serif;font-weight:700;font-size:15px;}
+  .tk-rec-main small{font-size:11.5px;color:var(--muted);font-weight:600;}
+  .tk-fills{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px;}
+  .tk-fill{font-size:11px;font-weight:800;color:var(--lime);background:#EAF8EE;border-radius:999px;padding:2px 8px;}
+  .tk-top-row{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+  .tk-top{display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;font:inherit;color:var(--ink);background:#fff;border:2px solid var(--line);border-radius:16px;padding:10px;cursor:pointer;min-width:0;transition:transform .15s ease;}
+  .tk-top:active{transform:scale(.96);}
+  .tk-top .em{font-size:26px;}
+  .tk-top b{font-family:'Fredoka',sans-serif;font-size:14px;}
+  .tk-top small{font-size:11px;color:var(--muted);}
+  .tk-plus{margin-top:6px;font-size:11.5px;font-weight:800;color:var(--coral);}
+  .tk-log-row{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--line);font-size:14px;min-height:48px;}
+  .tk-log-name{flex:1;min-width:0;}
+  .tk-log-name i{color:var(--muted);}
+  .tk-log-name small{color:var(--muted);font-size:11.5px;}
+  .tk-search{margin-top:10px;}
+  .tk-search .search-input{width:100%;font-size:16px;}
+  .tk-res{display:flex;align-items:center;gap:8px;width:100%;text-align:left;background:#F7FBFF;border:1.5px solid var(--line);border-radius:12px;padding:8px 10px;margin-top:6px;cursor:pointer;font:inherit;color:var(--ink);min-height:48px;}
+  .tk-res .em{font-size:22px;} .tk-res b{font-size:14px;} .tk-res small{color:var(--muted);font-size:11.5px;flex:1;}
+  .tk-res > span:last-child{color:var(--coral);font-weight:800;font-size:18px;}
+  @media (max-width:640px){
+    .tk-top-row{grid-template-columns:1fr 1fr;}
+    .tk-form{grid-template-columns:1fr 90px;}
+    .tk-rec{flex-wrap:wrap;}
+    .tk-rec .plan-add-btn{flex:1 1 100%;}
+  }
   /* ---------- Nutrition wheel ---------- */
   .wheel-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap;background:linear-gradient(120deg,rgba(139,92,246,.08),rgba(43,140,39,.08)),#fff;border:2px solid var(--line);border-radius:var(--radius-md);padding:14px 16px;margin:0 0 16px;}
   .wheel-wrap{flex:0 0 124px;width:124px;}
@@ -1482,7 +1552,8 @@
 
   <section id="plannersTab" hidden>
     <nav class="discover-subnav" id="plannersSubnav">
-      <button class="subtab active" data-psub="meal" type="button" style="--sub-c:var(--lime)">🗓️ Meal Planner</button>
+      <button class="subtab active" data-psub="today" type="button" style="--sub-c:var(--coral)">👪 Today</button>
+      <button class="subtab" data-psub="meal" type="button" style="--sub-c:var(--lime)">🗓️ Meal Planner</button>
       <button class="subtab" data-psub="sick" type="button" style="--sub-c:var(--coral)">🤒 Sick Day</button>
       <button class="subtab" data-psub="travel" type="button" style="--sub-c:var(--sky)">✈️ Travel</button>
       <button class="subtab" data-psub="growth" type="button" style="--sub-c:var(--lime)">📏 Growth Tracker</button>
@@ -1492,7 +1563,15 @@
       <button class="subtab" data-psub="buddy" type="button" style="--sub-c:var(--coral)">🤖 HappyNutri Buddy</button>
     </nav>
 
-    <section id="mealTab">
+    <section id="todayTab">
+      <div class="panel">
+        <h2 class="section-h2">👪 Today for my kids</h2>
+        <p class="mp-intro">Are your kids getting enough today, and what should you cook next? Add them once. Everything is worked out for their age and saved on this device.</p>
+        <div class="tk-body"></div>
+      </div>
+    </section>
+
+    <section id="mealTab" hidden>
       <div class="panel">
         <h2 class="section-h2">🗓️ Meal Planner</h2>
         <p class="mp-intro">Pick a recipe for each meal of the week. Every day adds up its nutrients against daily needs, and the shopping list builds itself. Your plan is saved on this device.</p>
@@ -3451,7 +3530,7 @@
   const refusedRecipes = new Set();
   const lovedRecipes = new Set();
 
-  let plannersSub = 'meal';
+  let plannersSub = 'today';
   let sickQuery = '';
   let travelQuery = '';
   let faqQuery = '';
@@ -5229,6 +5308,7 @@
     plannersSub = sub;
     if(mainTab==='planners') setHash('#/planners/'+sub);
     document.querySelectorAll('#plannersSubnav .subtab').forEach(b=>b.classList.toggle('active', b.getAttribute('data-psub')===sub));
+    document.getElementById('todayTab').hidden = sub!=='today';
     document.getElementById('mealTab').hidden = sub!=='meal';
     document.getElementById('sickTab').hidden = sub!=='sick';
     document.getElementById('travelTab').hidden = sub!=='travel';
@@ -5237,6 +5317,7 @@
     document.getElementById('videosTab').hidden = sub!=='videos';
     document.getElementById('faqTab').hidden = sub!=='faq';
     document.getElementById('buddyTab').hidden = sub!=='buddy';
+    if(sub==='today') renderToday();
     if(sub==='meal') renderMealPlanner();
     if(sub==='sick') renderSick();
     if(sub==='travel') renderTravel();
@@ -5919,6 +6000,7 @@
     else if(t.hasAttribute('data-mp-choose')){
       mealPlan[s.day][s.slot] = t.getAttribute('data-mp-choose');
       savePlan(); closeMpModal(); renderMealPlanner();
+      if(mainTab==='planners' && plannersSub==='today') renderToday();
     }
     else if(t.hasAttribute('data-mp-slot')){ s.slot = t.getAttribute('data-mp-slot'); renderMpModal(); }
     else if(t.hasAttribute('data-mp-day')){
@@ -5926,6 +6008,7 @@
       mealPlan[d][s.slot] = s.recipeId; savePlan();
       s.done = {day:d, slot:s.slot}; renderMpModal();
       if(mainTab==='planners' && plannersSub==='meal') renderMealPlanner();
+      if(mainTab==='planners' && plannersSub==='today') renderToday();
     }
     else if(t.hasAttribute('data-mp-again')){ s.done = null; renderMpModal(); }
     else if(t.hasAttribute('data-mp-open-planner')){ closeMpModal(); setMainTab('planners'); setPlannersSub('meal'); window.scrollTo(0,0); }
@@ -6099,6 +6182,234 @@
   renderExplore();
 
 
+  /* ================= Today for my kids: nutrient check + what to cook ================= */
+  const FAM_KEY = 'happynutri-family-v1';
+  const fam = { kids:[], extras:{date:'', items:[]}, editing:null, adding:false, query:'' };
+  (function loadFam(){
+    try{
+      const o = JSON.parse(localStorage.getItem(FAM_KEY)||'null');
+      if(!o) return;
+      if(Array.isArray(o.kids)) fam.kids = o.kids.filter(k=>k && k.name && k.age>=1 && k.age<=18).slice(0,6);
+      if(o.extras && o.extras.date===dexToday()) fam.extras = o.extras;
+    }catch(e){}
+  })();
+  function saveFam(){ try{ localStorage.setItem(FAM_KEY, JSON.stringify({kids:fam.kids, extras:fam.extras})); }catch(e){} }
+  // The nutrients that matter most for growing kids
+  const NEED_KEYS = ['cal','protein','fiber','calcium','iron','vitC','vitA','vitD','folate','zinc','potassium','vitB12','magnesium'];
+  const NEED_META = {vitD:{label:'Vitamin D', unit:'µg'}};
+  function needLabel(k){ return (NEED_META[k]||nutMeta(k)).label.replace(/ \(.*\)$/,''); }
+  function needUnit(k){ return (NEED_META[k]||nutMeta(k)).unit; }
+  function ageGroup(age){ return age<=3 ? '1-3' : age<=8 ? '4-8' : age<=13 ? '9-13' : '14-18'; }
+  // Portion of one recipe serving a child usually eats
+  const AGE_PORTION = {'1-3':0.5, '4-8':0.75, '9-13':1, '14-18':1.25};
+  function kidTarget(kid, k){
+    const g = ageGroup(kid.age), sx = kid.sex==='boy' ? 'm' : 'f';
+    const src = PLAN_EXTRA_DRI[k] || RDA_DATA[k];
+    return src && src[g] ? src[g][sx] : null;
+  }
+  function nutVal(n, k){ return k==='vitD' ? (n.vitD2||0)+(n.vitD3||0) : (n[k]||0); }
+  function servingGrams(f){ const m = /\((\d+(?:\.\d+)?)\s*g\)/.exec(f.serving||''); return m ? Number(m[1]) : 100; }
+  function foodServingNut(f, servings){
+    const g = servingGrams(f)*(servings||1), out = {};
+    Object.keys(f.per100).forEach(k=>{ out[k] = f.per100[k]*g/100; });
+    return out;
+  }
+  function addNut(tot, n, factor){ Object.keys(n).forEach(k=>{ tot[k] = (tot[k]||0) + n[k]*(factor==null?1:factor); }); return tot; }
+  function todayName(){ return WEEK_DAYS[(new Date().getDay()+6)%7]; }
+  function ensureExtrasToday(){ if(fam.extras.date!==dexToday()){ fam.extras = {date:dexToday(), items:[]}; } }
+  // Everything a kid has eaten today: planned meals (scaled to their age) + extras
+  function kidToday(kid){
+    ensureExtrasToday();
+    const portion = AGE_PORTION[ageGroup(kid.age)];
+    const tot = {};
+    MEAL_SLOTS.forEach(s=>{ const r = recipeById(mealPlan[todayName()][s.key]); if(r) addNut(tot, recipeNutrients(r), portion); });
+    fam.extras.items.forEach(x=>{
+      if(x.t==='f'){ const f = itemById(x.id); if(f) addNut(tot, foodServingNut(f, x.n)); }
+      else { const r = recipeById(x.id); if(r) addNut(tot, recipeNutrients(r), portion*x.n); }
+    });
+    return tot;
+  }
+  function kidGaps(kid){
+    const tot = kidToday(kid);
+    return NEED_KEYS.map(k=>{ const t = kidTarget(kid,k), v = nutVal(tot,k); return {k, t, v, pct: t ? v/t*100 : 0}; });
+  }
+  function nextSlot(){
+    const h = new Date().getHours();
+    const order = h<10 ? ['breakfast','lunch','snack','dinner'] : h<14 ? ['lunch','snack','dinner'] : h<17 ? ['snack','dinner'] : ['dinner','snack'];
+    return order.find(k=>!mealPlan[todayName()][k]) || null;
+  }
+  // How much a recipe would close every kid's remaining gaps (calories left out: more isn't better)
+  function gapScore(nutPerServing){
+    let score = 0;
+    const fills = {};
+    fam.kids.forEach(kid=>{
+      const portion = AGE_PORTION[ageGroup(kid.age)];
+      kidGaps(kid).forEach(g=>{
+        if(g.k==='cal' && g.t){
+          // Don't reward meals that would push a child well past today's energy needs
+          const over = (g.v + nutVal(nutPerServing,'cal')*portion) - g.t*1.15;
+          if(over>0) score -= over/g.t*2;
+          return;
+        }
+        if(!g.t) return;
+        const missing = Math.max(0, g.t - g.v);
+        if(!missing) return;
+        const add = Math.min(missing, nutVal(nutPerServing, g.k)*portion);
+        score += add/g.t;
+        fills[g.k] = (fills[g.k]||0) + add/g.t*100/fam.kids.length;
+      });
+    });
+    return {score, fills};
+  }
+  function suggestRecipes(slot){
+    const todays = new Set(MEAL_SLOTS.map(s=>mealPlan[todayName()][s.key]).filter(Boolean));
+    let pool = RECIPES.filter(r=>(r.meal||[]).includes(slot) && !refusedRecipes.has(r.id) && !todays.has(r.id));
+    if(slot==='lunch'){ const light = pool.filter(r=>!r.meal.includes('dinner') || KID_LUNCH_EXTRA.includes(r.id)); if(light.length>=5) pool = light; }
+    return pool.map(r=>Object.assign({r}, gapScore(recipeNutrients(r)))).sort((a,b)=>b.score-a.score).slice(0,3);
+  }
+  function suggestTopUps(){
+    // Things you can hand a child in a couple of minutes, no cooking
+    const SNACK_VEG = ['carrot','cucumber','bellpepper','tomato','corn','greenpeas','beansprouts'];
+    const pool = ITEMS.filter(f=>f.type==='fruit' || SNACK_VEG.includes(f.id) || ['dairy','egg'].includes(f.category) || f.id==='edamame'
+      || (f.type==='pantry' && ['nut','seed'].includes(f.category)));
+    return pool.map(f=>Object.assign({f}, gapScore(foodServingNut(f,1)))).sort((a,b)=>b.score-a.score).slice(0,4);
+  }
+  function fillChips(fills, max){
+    return Object.keys(fills).filter(k=>fills[k]>=3).sort((a,b)=>fills[b]-fills[a]).slice(0, max||3)
+      .map(k=>'<span class="tk-fill">+'+Math.round(fills[k])+'% '+needLabel(k)+'</span>').join('');
+  }
+
+  function renderToday(){
+    const root = document.getElementById('todayTab');
+    if(!root) return;
+    ensureExtrasToday();
+    const day = todayName();
+    // Kids
+    let html = '<div class="tk-kids">'
+      + fam.kids.map(k=>'<button type="button" class="tk-kid-chip" data-tk-edit="'+k.id+'">'+(k.sex==='boy'?'👦':'👧')+' '+hnEsc(k.name)+' <small>'+k.age+'</small></button>').join('')
+      + (fam.kids.length<6 ? '<button type="button" class="tk-kid-chip add" data-tk-add>＋ Add child</button>' : '') + '</div>';
+    if(fam.adding || fam.editing || !fam.kids.length){
+      const k = fam.kids.find(x=>x.id===fam.editing) || {name:'', age:8, sex:'girl'};
+      html += '<form class="tk-form" id="tkForm">'
+        + '<p class="tk-form-title">'+(fam.editing ? 'Edit '+hnEsc(k.name) : fam.kids.length ? 'Add another child' : 'Who are you cooking for? Add your child to see if they’re getting enough.')+'</p>'
+        + '<label>Name<input class="search-input" name="name" maxlength="20" required value="'+hnEsc(k.name)+'" placeholder="e.g. Aarav"></label>'
+        + '<label>Age<input class="search-input" name="age" type="number" min="1" max="18" required value="'+k.age+'"></label>'
+        + '<div class="tk-sex"><label><input type="radio" name="sex" value="girl"'+(k.sex!=='boy'?' checked':'')+'> 👧 Girl</label><label><input type="radio" name="sex" value="boy"'+(k.sex==='boy'?' checked':'')+'> 👦 Boy</label></div>'
+        + '<div class="tk-form-actions"><button class="shuffle-btn" type="submit">'+(fam.editing?'Save':'Add child')+'</button>'
+        + (fam.kids.length ? '<button class="mp-btn" type="button" data-tk-cancel>Cancel</button>' : '')
+        + (fam.editing ? '<button class="mp-btn warn-text" type="button" data-tk-remove="'+k.id+'">Remove</button>' : '') + '</div></form>';
+    }
+    if(!fam.kids.length){ root.querySelector('.tk-body').innerHTML = html; return; }
+
+    // Nutrient check per child
+    html += '<div class="tk-cards">'+fam.kids.map(kid=>{
+      const gaps = kidGaps(kid).filter(g=>g.t);
+      const scored = gaps.filter(g=>g.k!=='cal');
+      const ok = scored.filter(g=>g.pct>=90), low = scored.filter(g=>g.pct<50).sort((a,b)=>a.pct-b.pct);
+      const cal = gaps.find(g=>g.k==='cal');
+      const eatenCount = MEAL_SLOTS.filter(s=>mealPlan[day][s.key]).length + fam.extras.items.length;
+      const head = !eatenCount ? 'Nothing logged yet today, so everything starts low.'
+        : low.length ? 'Still low so far today:'
+        : '🎉 Nothing is low today. Great job!';
+      return '<div class="tk-card"><div class="tk-card-head"><span class="tk-av">'+(kid.sex==='boy'?'👦':'👧')+'</span><div><b>'+hnEsc(kid.name)+'</b><small>Age '+kid.age+' · '+Math.round(cal.v)+' of '+cal.t+' kcal</small></div>'
+        + '<span class="tk-score"><b>'+ok.length+'</b>/'+scored.length+'<small>covered<br>so far</small></span></div>'
+        + '<p class="tk-head">'+head+'</p>'
+        + (low.length ? '<div class="tk-lows">'+low.map(g=>'<span>'+needLabel(g.k)+' '+Math.round(g.pct)+'%</span>').join('')+'</div>' : '')
+        + '<details class="tk-more"><summary>See all '+gaps.length+' nutrients</summary><div class="tk-bars">'+gaps.map(g=>{ const st = g.pct>=90?'ok':g.pct>=50?'mid':'low';
+            return '<div class="tk-bar '+st+'" title="'+needLabel(g.k)+': '+fmtNum(g.v)+' of '+fmtNum(g.t)+' '+needUnit(g.k)+'"><span class="tk-bl">'+needLabel(g.k)+'</span><span class="tk-bt"><i style="width:'+Math.min(100,g.pct).toFixed(0)+'%"></i></span><span class="tk-bv">'+Math.round(g.pct)+'%</span></div>'; }).join('')+'</div></details>'
+        + '</div>';
+    }).join('')+'</div>';
+
+    // What to cook
+    const slot = nextSlot();
+    if(slot){
+      const slotInfo = MEAL_SLOTS.find(s=>s.key===slot);
+      const recs = suggestRecipes(slot);
+      html += '<div class="tk-cook"><h3>🍳 What to cook for '+slotInfo.label.toLowerCase()+'</h3><p class="tk-sub">Picked to fill today’s gaps for '+fam.kids.map(k=>hnEsc(k.name)).join(' & ')+'.</p>'
+        + recs.map((x,i)=>{ const n = recipeNutrients(x.r);
+            return '<div class="tk-rec'+(i===0?' best':'')+'">'+(i===0?'<span class="tk-best">Best pick</span>':'')
+              + '<span class="tk-rec-e">'+x.r.emoji+'</span><div class="tk-rec-main"><button type="button" class="recipe-link" data-recipe-link="'+x.r.id+'">'+x.r.name+'</button>'
+              + '<small>⏱️ '+x.r.time+' · '+Math.round(n.cal||0)+' kcal a serving</small><div class="tk-fills">'+(fillChips(x.fills)||'<span class="tk-fill">Balanced meal</span>')+'</div></div>'
+              + '<button type="button" class="plan-add-btn" data-tk-cook="'+slot+'|'+x.r.id+'">Cook it</button></div>'; }).join('')
+        + '</div>';
+    } else {
+      html += '<div class="tk-cook done"><h3>✅ Today’s meals are all planned</h3><p class="tk-sub">Top up anything that’s still low with a quick snack below.</p></div>';
+    }
+    const tops = suggestTopUps().filter(x=>x.score>0);
+    if(tops.length){
+      html += '<div class="tk-tops"><h3>⚡ Quick top-ups</h3><div class="tk-top-row">'+tops.map(x=>'<button type="button" class="tk-top" data-tk-extra="f|'+x.f.id+'"><span class="em">'+x.f.emoji+'</span><b>'+x.f.name+'</b><small>'+x.f.serving.replace(/^~/,'')+'</small><span class="tk-fills">'+fillChips(x.fills,2)+'</span><span class="tk-plus">＋ They ate this</span></button>').join('')+'</div></div>';
+    }
+
+    // Today's food log
+    html += '<div class="tk-log"><h3>📝 What they ate today <small>'+day+'</small></h3>'
+      + MEAL_SLOTS.map(s=>{ const r = recipeById(mealPlan[day][s.key]);
+          return '<div class="tk-log-row"><span>'+s.icon+'</span><span class="tk-log-name">'+(r ? '<button type="button" class="recipe-link" data-recipe-link="'+r.id+'">'+r.emoji+' '+r.name+'</button>' : '<i>No '+s.label.toLowerCase()+' yet</i>')+'</span>'
+            + '<button type="button" class="mp-icon-btn" data-mp-pick-today="'+s.key+'" aria-label="'+(r?'Change':'Add')+' '+s.label.toLowerCase()+'">'+(r?'🔄':'＋')+'</button>'
+            + (r ? '<button type="button" class="mp-icon-btn" data-tk-clear="'+s.key+'" aria-label="Remove '+s.label.toLowerCase()+'">✕</button>' : '')+'</div>'; }).join('')
+      + fam.extras.items.map((x,i)=>{ const it = x.t==='f' ? itemById(x.id) : recipeById(x.id); if(!it) return '';
+          return '<div class="tk-log-row extra"><span>➕</span><span class="tk-log-name">'+it.emoji+' '+it.name+(x.t==='f'?' <small>'+x.n+' × '+it.serving.replace(/^~/,'')+'</small>':'')+'</span><button type="button" class="mp-icon-btn" data-tk-unextra="'+i+'" aria-label="Remove">✕</button></div>'; }).join('')
+      + '<div class="tk-search"><input class="search-input" id="tkSearch" type="search" placeholder="＋ Add something else they ate (milk, banana, nuts…)" value="'+hnEsc(fam.query)+'" autocomplete="off"><div id="tkResults"></div></div>'
+      + '<p class="mp-note">Planned meals count as eaten, scaled to each child’s age (ages 4–8 eat about ¾ of a serving, teens about 1¼). Values are estimates — a guide, not a diagnosis.</p></div>';
+    root.querySelector('.tk-body').innerHTML = html;
+    renderTkResults();
+    if(!reducedMotion()) requestAnimationFrame(()=>root.querySelectorAll('.tk-card, .tk-cook, .tk-tops, .tk-log').forEach((n,i)=>{ n.style.setProperty('--d',(i*60)+'ms'); n.classList.add('rise'); }));
+  }
+  function renderTkResults(){
+    const box = document.getElementById('tkResults');
+    if(!box) return;
+    const q = fam.query.trim().toLowerCase();
+    if(q.length<2){ box.innerHTML = ''; return; }
+    const foods = ITEMS.filter(f=>f.type!=='spice' && f.name.toLowerCase().includes(q)).slice(0,5).map(f=>({t:'f', it:f, sub:f.serving.replace(/^~/,'')}));
+    const recs = RECIPES.filter(r=>r.name.toLowerCase().includes(q)).slice(0,3).map(r=>({t:'r', it:r, sub:'1 serving (recipe)'}));
+    const all = foods.concat(recs);
+    box.innerHTML = all.length ? all.map(x=>'<button type="button" class="tk-res" data-tk-extra="'+x.t+'|'+x.it.id+'"><span class="em">'+x.it.emoji+'</span><b>'+x.it.name+'</b><small>'+x.sub+'</small><span>＋</span></button>').join('') : '<p class="mp-empty">Nothing found — try another word.</p>';
+  }
+  const todayTabEl = document.getElementById('todayTab');
+  todayTabEl.addEventListener('click', e=>{
+    const t = e.target.closest ? e.target.closest('button') : null;
+    if(!t) return;
+    if(t.hasAttribute('data-tk-add')){ fam.adding = true; fam.editing = null; renderToday(); const i=document.querySelector('#tkForm input[name=name]'); if(i) i.focus(); }
+    else if(t.hasAttribute('data-tk-edit')){ fam.editing = t.getAttribute('data-tk-edit'); fam.adding = false; renderToday(); }
+    else if(t.hasAttribute('data-tk-cancel')){ fam.editing = null; fam.adding = false; renderToday(); }
+    else if(t.hasAttribute('data-tk-remove')){ const id = t.getAttribute('data-tk-remove'); fam.kids = fam.kids.filter(k=>k.id!==id); fam.editing = null; saveFam(); renderToday(); }
+    else if(t.hasAttribute('data-tk-cook')){
+      const [slot, id] = t.getAttribute('data-tk-cook').split('|');
+      mealPlan[todayName()][slot] = id; savePlan(); renderToday();
+      const r = recipeById(id); hnToast('🍳 '+r.name+' is on today’s '+slot); burstConfetti(t);
+    }
+    else if(t.hasAttribute('data-tk-extra')){
+      const [kind, id] = t.getAttribute('data-tk-extra').split('|');
+      ensureExtrasToday();
+      const ex = fam.extras.items.find(x=>x.t===kind && x.id===id);
+      if(ex) ex.n++; else fam.extras.items.push({t:kind, id, n:1});
+      fam.query = ''; saveFam(); renderToday();
+      const it = kind==='f' ? itemById(id) : recipeById(id); hnToast('➕ Added '+it.emoji+' '+it.name);
+    }
+    else if(t.hasAttribute('data-tk-unextra')){ fam.extras.items.splice(Number(t.getAttribute('data-tk-unextra')),1); saveFam(); renderToday(); }
+    else if(t.hasAttribute('data-tk-clear')){ mealPlan[todayName()][t.getAttribute('data-tk-clear')] = null; savePlan(); renderToday(); }
+    else if(t.hasAttribute('data-mp-pick-today')){ openMpModal({mode:'pick', day:todayName(), slot:t.getAttribute('data-mp-pick-today'), query:'', all:false}); }
+  });
+  todayTabEl.addEventListener('submit', e=>{
+    if(e.target.id!=='tkForm') return;
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    const name = String(fd.get('name')||'').trim().slice(0,20);
+    const age = Math.max(1, Math.min(18, Math.round(Number(fd.get('age'))||0)));
+    const sex = fd.get('sex')==='boy' ? 'boy' : 'girl';
+    if(!name || !age) return;
+    if(fam.editing){ const k = fam.kids.find(x=>x.id===fam.editing); if(k) Object.assign(k, {name, age, sex}); }
+    else fam.kids.push({id:'k'+Date.now().toString(36), name, age, sex});
+    fam.editing = null; fam.adding = false; saveFam(); renderToday();
+  });
+  todayTabEl.addEventListener('input', e=>{ if(e.target.id==='tkSearch'){ fam.query = e.target.value; renderTkResults(); } });
+  // Home summary line for the parent tile
+  function todayHomeSub(){
+    if(!fam.kids.length) return 'Are they getting enough?';
+    const lows = fam.kids.map(k=>kidGaps(k).filter(g=>g.k!=='cal' && g.t && g.pct<50).length);
+    const n = Math.max(...lows);
+    return n ? n+' nutrient'+(n===1?'':'s')+' low today' : 'All covered today 🎉';
+  }
+
   /* ================= Home: the starting point for kids and parents ================= */
   const TAB_ORDER = ['home','explore','game','discover','planners','collect'];
   let lastTabForAnim = 'home';
@@ -6131,10 +6442,10 @@
         {emoji:'🧠', label:'More games', sub:'Memory, quiz, speed sort', go:'game:guess', c:'#EAF8EE'},
       ]},
       {title:'Plan & cook', note:'For parents', tiles:[
-        {emoji:'🗓️', label:'Meal Planner', sub:planned ? planned+' of 28 meals planned' : 'Plan the week in minutes', go:'planners:meal', c:'#EAF8EE'},
+        {emoji:'👪', label:'Today for my kids', sub:todayHomeSub()+' · what to cook', go:'planners:today', c:'#FFE4EC'},
+        {emoji:'🗓️', label:'Meal Planner', sub:planned ? planned+' of 28 meals planned' : 'Plan the week + shopping list', go:'planners:meal', c:'#EAF8EE'},
         {emoji:'🍳', label:'Recipes', sub:RECIPES.length+' with nutrients', go:'discover:recipes', c:'#FFF1DC'},
         {emoji:'🧒', label:'Kids’ Week', sub:'A ready-made week of meals', go:'discover:kids', c:'#E8F0FF'},
-        {emoji:'🛒', label:'Shopping list', sub:planned ? 'Built from your plan' : 'Fills in as you plan', go:'planners:meal:shop', c:'#F3ECFF'},
       ]},
       {title:'Help & track', note:'', tiles:[
         {emoji:'🤖', label:'Ask Buddy', sub:'Quick food answers', go:'planners:buddy', c:'#F3ECFF'},
