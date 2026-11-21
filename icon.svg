@@ -1,8 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><rect width="192" height="192" fill="#F3F0FF"/><g transform="translate(34 34) scale(1.24)"><linearGradient id="hnBody" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#A78BFA"/><stop offset="1" stop-color="#6D28D9"/></linearGradient>
-<linearGradient id="hnLeaf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7ED957"/><stop offset="1" stop-color="#2E8B1F"/></linearGradient>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><rect width="192" height="192" fill="#F8F9FA"/><g transform="translate(34 34) scale(1.24)"><linearGradient id="hnBody" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF9A52"/><stop offset="1" stop-color="#FF6600"/></linearGradient>
+<linearGradient id="hnLeaf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#89CFF0"/><stop offset="1" stop-color="#3FA8DC"/></linearGradient>
 <path d="M50 32C30 19 8 35 12 59C15 81 34 93 50 87C66 93 85 81 88 59C92 35 70 19 50 32Z" fill="url(#hnBody)"/>
 <ellipse cx="29" cy="46" rx="7" ry="11" transform="rotate(25 29 46)" fill="#fff" opacity=".22"/>
-<path d="M50 32C48 24 48 19 50 14" fill="none" stroke="#2E8B1F" stroke-width="4" stroke-linecap="round"/>
+<path d="M50 32C48 24 48 19 50 14" fill="none" stroke="#262626" stroke-width="4" stroke-linecap="round"/>
 <path d="M52 27C52 13 64 5 80 7C80 22 69 31 52 27Z" fill="url(#hnLeaf)"/>
 <circle cx="37" cy="58" r="4.5" fill="#fff"/><circle cx="63" cy="58" r="4.5" fill="#fff"/>
 <path d="M38 69Q50 81 62 69" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round"/></g></svg>

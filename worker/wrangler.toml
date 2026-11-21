@@ -1,0 +1,13 @@
+name = "happynutri-buddy"
+main = "worker.js"
+compatibility_date = "2025-01-01"
+
+[vars]
+MODEL = "claude-sonnet-5-5"
+RATE_LIMIT = "20"
+# ALLOWED_ORIGINS = "https://happynutri.in,https://www.happynutri.in,https://pvm444.github.io"
+
+# Optional: durable, shared rate limiting
+# [[kv_namespaces]]
+# binding = "RATE_KV"
+# id = "<your kv namespace id>"
